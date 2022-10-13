@@ -1,0 +1,112 @@
+<div class="container">
+  <div class="overview">
+    <div class="overview-right">
+      <p class="overview-right__text">Micro Jobs</p>
+      <p class="overview-right__text">Paid Survey <i class="fa-solid fa-sort-down"></i></p>
+      <p class="overview-right__text">Offers <i class="fa-solid fa-sort-down"></i></p>
+    </div>
+    <div class="overview-left">
+      <span><i class="fa-solid fa-list"></i></span>
+      <span><i class="fa-sharp fa-solid fa-bars"></i></span>
+      <span><i class="fa-solid fa-barcode"></i></span>
+    </div>
+  </div>
+  <div class="search-content">
+    <div class="search-group search-job" clickOutside (clickOutside)="showJob = false">
+      <label for="job" (click)="showJob = true">
+        <span>Job Level<i class="fa-solid fa-sort-down"></i></span>
+      </label>
+      <input type="checkbox" id="job" *ngIf="showJob">
+      <div class="select-job shared">
+        <ul class="job-content content">
+          <li *ngFor="let item of job" class="list-job list">
+            <input type="checkbox" id="{{item}}"><label for="{{item}}">{{item}}</label>
+          </li>
+        </ul>
+        <div class="select-btn">
+          <button class="select-btn__clear">CLEAR</button>
+          <button class="select-btn__apply">APPLY</button>
+        </div>
+      </div>
+    </div>
+    <div class="search-group search-category" clickOutside (clickOutside)="showCategory = false">
+      <label for="category" (click)="showCategory = true"><span>Category<i class="fa-solid fa-sort-down"></i></span></label>
+      <input type="checkbox" id="category" *ngIf="showCategory">
+      <div class="select-category shared">
+        <ul class="category-content content">
+          <li *ngFor="let item of category" class="list-category list">
+            <input type="radio" id="{{item}}" name="category"><label for="{{item}}">{{item}}</label>
+          </li>
+        </ul>
+        <div class="select-btn">
+          <button class="select-btn__clear">CLEAR</button>
+          <button class="select-btn__apply">APPLY</button>
+        </div>
+      </div>
+    </div>
+    <div class="search-group search-subCategory" clickOutside (clickOutside)="showSubCategory = false">
+      <label for="subCategory" (click)="showSubCategory = true"><span>Sub Category<i class="fa-solid fa-sort-down"></i></span></label>
+      <input type="checkbox" id="subCategory" *ngIf="showSubCategory">
+      <div class="select-subCategory shared">
+        <ul class="subCategory-content content">
+          <li *ngFor="let item of subCategory" class="list-subCategory list">
+            <input type="checkbox" id="{{item}}"><label for="{{item}}">{{item}}</label>
+          </li>
+        </ul>
+        <div class="select-btn">
+          <button class="select-btn__clear">CLEAR</button>
+          <button class="select-btn__apply">APPLY</button>
+        </div>
+      </div>
+    </div>
+    <div class="search-group payment" clickOutside (clickOutside)="showPayment = false">
+      <label for="payment"><span>Payment<i class="fa-solid fa-sort-down"></i></span></label>
+      <!-- <input type="range" min="1" max="50"> -->
+    </div>
+    <div class="search-group search-location" clickOutside (clickOutside)="showLocation = false">
+      <label for="location" (click)="showLocation = true"><span>Location<i class="fa-solid fa-sort-down"></i></span></label>
+      <input type="checkbox" id="location" *ngIf="showLocation">
+      <div class="select-location shared">
+        <ul class="location-content content">
+          <li *ngFor="let item of location" class="list-location list">
+            <input type="checkbox" id="{{item}}" name="location"><label for="{{item}}">{{item}}</label>
+          </li>
+        </ul>
+        <div class="select-btn">
+          <button class="select-btn__clear">CLEAR</button>
+          <button class="select-btn__apply">APPLY</button>
+        </div>
+      </div>
+    </div>
+    <div class="search-group search-emp" clickOutside (clickOutside)="showEmp = false">
+      <label for="emp" (click)="showEmp = true"><span>Emp.Stats<i class="fa-solid fa-sort-down"></i></span></label>
+      <input type="checkbox" id="emp" *ngIf="showEmp">
+      <div class="select-emp shared">
+        <ul class="emp-content content">
+          <li *ngFor="let item of emp" class="list-emp list">
+            <input type="checkbox" id="{{item}}" name="emp"><label for="{{item}}">{{item}}</label>
+          </li>
+        </ul>
+        <div class="select-btn">
+          <button class="select-btn__clear">CLEAR</button>
+          <button class="select-btn__apply">APPLY</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="result">
+    <p class="show-result">889 results</p>
+    <div class="search-result">
+      <input type="text" placeholder="Search job and press enter">
+      <label for="sort"><span>Sort by/</span></label>
+      <div class="dropdown" (clickOutside)="clickOutside($event)">
+        <label for="" (click)="toggle()" style="cursor: pointer;"><span>Newest<i class="fa-solid fa-sort-down"></i></span></label>
+        <div class="dropdown-list" *ngIf="isToggle">
+          <a href="">Newest</a>
+          <a href="">Oldest</a>
+          <a href="">Title</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

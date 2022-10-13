@@ -1,0 +1,29 @@
+<app-header></app-header>
+<div class="container">
+  <div class="form">
+    <h2 class="form-header">Login</h2>
+    <div class="form-content">
+      <div class="form-group">
+        <label for="">Email</label>
+        <input type="text" placeholder="Enter your email">
+      </div>
+      <div class="form-group">
+        <label for="">Password</label>
+        <input type="text" placeholder="Enter your password">
+      </div>
+      <div class="form-check">
+        <div class="check">
+          <input type="checkbox" id="rememberMe">
+          <span></span>
+          <label for="rememberMe">Remember me</label>
+        </div>
+       <span class="forgotPassword link" (click)="onForgotPw()" style="cursor: pointer; text-decoration: underline;">Forgot Password?</span>
+      </div>
+    </div>
+    <div class="form-footer">
+      <button class="form-footer__btn" (click)="onDetails()">LOGIN</button>
+      <p class="form-footer__text">New to SproutGigs? <span class="createAccount link" (click)="onSignUp()" style="cursor: pointer; text-decoration: underline;">Create an account</span></p>
+    </div>
+  </div>
+</div>
+<app-footer></app-footer>

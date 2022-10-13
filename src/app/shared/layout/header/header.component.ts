@@ -1,0 +1,22 @@
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.css'],
+})
+export class HeaderComponent implements OnInit {
+  isOpenMenu = false;
+  toggleMenu() {
+    this.isOpenMenu = !this.isOpenMenu;
+  }
+  constructor(private router: Router) {}
+  onSignUp() {
+    this.router.navigate(['/signUp']);
+  }
+  onLogin() {
+    this.router.navigate(['/login']);
+  }
+  ngOnInit(): void {}
+}

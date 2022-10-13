@@ -1,0 +1,99 @@
+<header class="header">
+  <div class="nav">
+    <a href=""><img src="https://sproutgigs.com/assets/images/logo-sg.svg" alt="" class="nav__logo"></a>
+    <ul class="nav-menu">
+      <li class="menu-item"><span class="menu-item__link" (click)="showDropdown()" (clickOutside)="outSide($event)" style="cursor:pointer;">My Tasks <i class="fa-solid fa-sort-down"></i></span></li>
+      <li class="menu-item"><span class="menu-item__link">Wallet</span></li>
+      <div class="dropdown-menu" *ngIf="isShow">
+        <div class="menu-top item-dropdown">
+          <a href="">Find job </a>
+          <a href="">Finished Tasks <span>0</span></a>
+        </div>
+        <hr>
+        <div class="menu-bottom item-dropdown">
+          <a href="">satisfied + paid <span>0</span></a>
+          <a href="">Pending review <span>0</span></a>
+        </div>
+
+      </div>
+    </ul>
+    <div class="nav-notification">
+      <div class="switch-role">
+        <label class="switch">
+          <input type="checkbox" checked>
+          <span class="slider round" (click)="onSwitch()"></span>
+        </label>
+        <span>Switch Role</span>
+      </div>
+      <div class="notification">
+        <div class="noti-viewlog feature">
+          <span>Support center</span>
+          <i class="fa-regular fa-circle-question"></i>
+        </div>
+        <div class="noti-notification feature">
+          <span>Notification</span>
+          <i class="fa-regular fa-bell"></i>
+        </div>
+        <div class="noti-viewlog feature">
+          <span>View Log</span>
+          <i class="fa-regular fa-clock"></i>
+        </div>
+        <div class="noti-profile feature">
+          <span>Profile</span>
+          <img src="https://sproutgigs.com/assets/images/profile_no_image.gif" alt="">
+        </div>
+        <div class="menu-bar">
+          <label for="showMenu"><i class="fa-solid fa-bars"></i></label>
+        </div>
+        <div class="noti-darkmode darkmode">
+          <i class="fa-solid fa-moon"></i>
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-post" *ngIf="isSwitch" (click) = "gotoPost()">POST JOBS</button>
+    <button class="btn btn-find" *ngIf="!isSwitch" (click) = "gotoFind()">FIND JOBS</button>
+  </div>
+</header>
+<div class="notice">
+  <div class="notice-right">
+    <span>API</span>
+    <span>Refer a Friend</span>
+    <span>Deposit Funds</span>
+  </div>
+  <div class="notice-left">
+    <p>Spendable: <span>$0.0000</span></p>
+  </div>
+</div>
+<input type="checkbox" id="showMenu">
+<div class="responsive-menu">
+  <div>
+    <div class="profile">
+      <div class="profile-infor">
+        <img src="https://sproutgigs.com/assets/images/profile_no_image.gif" alt="">
+        <span>hello, thaohd</span>
+      </div>
+      <label for="showMenu"><i class="fa-solid fa-xmark"></i></label>
+    </div>
+    <div class="switch-role res-role">
+      <label class="switch">
+        <input type="checkbox" checked>
+        <span class="slider round"></span>
+      </label>
+      <span>Switch Role</span>
+    </div>
+    <ul class="res-menu">
+      <li class="res-item"><a class="res-item__link" style="cursor:pointer;">My Tasks <i class="fa-solid fa-sort-down"></i></a></li>
+      <li class="res-item"><a class="res-item__link">Wallet</a></li>
+      <li class="res-item"><a class="res-item__link">Acount Setting</a></li>
+      <li class="res-item"><a class="res-item__link">Workes Ranking</a></li>
+      <li class="res-item"><a class="res-item__link">Support Tickets</a></li>
+      <li class="res-item"><a class="res-item__link">Notification</a></li>
+      <li class="res-item"><a class="res-item__link">Logs</a></li>
+      <li class="res-item"><a class="res-item__link">FAQs</a></li>
+      <li class="res-item"><a class="res-item__link">Share & Earn</a></li>
+      <li class="res-item"><a class="res-item__link">Logout</a></li>
+    </ul>
+  </div>
+  <button class="res-btn btn-find">FIND JOBS</button>
+</div>
+

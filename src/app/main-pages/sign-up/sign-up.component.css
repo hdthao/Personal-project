@@ -1,0 +1,182 @@
+.container {
+  padding: 0 37.3%;
+  margin-top: 40px;
+}
+.form-header {
+  color: var(--second-text);
+  margin-bottom: 20px;
+  font-weight: 700;
+  font-size: 25px;
+}
+.form-group {
+  display: flex;
+  justify-content:space-between;
+  gap: 20px;
+}
+.child-group label {
+  color: var(--color-lable);
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 10px;
+}
+.form-group input[type='text'], input[type = 'password'] {
+  height: 40px;
+  background: var(--bg-input);
+  border: none;
+  outline: none;
+  margin-bottom: 30px;
+  padding: 0 10px;
+  width: 100%;
+  font-size: 15px;
+}
+.form-group input:focus {
+  border-bottom: 2px solid var(--primary-color);
+}
+.child-group {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.form-group select {
+  height: 40px;
+  background: var(--bg-input);
+  border: none;
+  outline: none;
+  margin-bottom: 30px;
+  padding: 0 30px;
+  color: #686d77;
+  font-weight: 400;
+  font-size: 15px;
+}
+.form-group select:focus {
+  border-bottom: 2px solid var(--primary-color);
+}
+.group-role {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  justify-content: center;
+  gap: 10px;
+}
+.role {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+.role label {
+  font-size: 15px;
+  color: var(--primary-text);
+  cursor: pointer;
+}
+input[type="radio"] {
+  display: grid;
+  place-content: center;
+}
+
+input[type="radio"]::before {
+  content: "";
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--primary-color);
+  transform: scale(0);
+  transition: 120ms transform ease-in-out;
+  box-shadow: inset 10px 10px var(--primary-color);
+}
+
+input[type="radio"]:checked::before {
+  transform: scale(1);
+}
+.group-text {
+  flex: 2;
+}
+.group-text p {
+  color: var(--second-text);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.group-text span {
+  color: var(--primary-text);
+  font-size: 15px;
+}
+.group-checks {
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.group-check {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.group-check label {
+  color: #686d77;
+  font-size: 15px;
+  cursor: pointer;
+}
+.group-check input[type='checkbox'] {
+  display: none;
+}
+.group-check span {
+  width: 12px;
+  height: 12px;
+  border: solid 1px #dddd;
+  border-radius: 2px;
+  display: inline-block;
+}
+.group-check input[type='checkbox']:checked + span {
+  background-color: var(--primary-color);
+  border: solid 1px #ffff;
+  box-shadow: 0 0 2px 2px var(--primary-color);
+}
+.form-footer {
+  text-align: center;
+  margin-bottom: 128px;
+}
+.form-footer__btn {
+  width: 100%;
+  padding: 13px 0;
+  border: none;
+  background: var(--primary-color);
+  font-weight: 600;
+  color: #ffff;
+  font-size: 15px;
+  cursor: pointer;
+}
+.form-footer__text {
+  margin-top: 20px;
+  color: var(--primary-text);
+}
+.link {
+  color: var(--primary-color);
+}
+@media screen and (min-width: 768px){
+  .container {
+    padding: 0 calc(( 100% - 440px ) / 2);
+    margin-top: 40px;
+  }
+}
+@media screen and (max-width: 767px) {
+  .container {
+    padding: 0 calc(( 100% - 440px ) / 2);
+    margin-top: 40px;
+    margin-bottom: -40px;
+  }
+  .form-group {
+    flex-direction: column;
+    gap: 0;
+  }
+  .group-checks {
+    gap: 10px;
+  }
+  .group-roles {
+    flex-direction: row;
+  }
+}
+@media screen and (max-width: 460px){
+  .container {
+    padding: 0 5%;
+    margin-top: 40px;
+  }
+}
