@@ -1,3 +1,4 @@
+import { LabelType, Options } from '@angular-slider/ngx-slider';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 
 @Component({
@@ -15,12 +16,7 @@ export class SearchComponent implements OnInit {
   showPayment = true;
   showLocation = true;
   showEmp = true;
-  toggle() {
-    this.isToggle = !this.isToggle;
-  }
-  clickOutside(e: any) {
-    this.isToggle = false;
-  }
+  showPrice = true;
   job = ['Starter', 'Advanced', 'Expert'];
   category = [
     'Ad, Sales, Social Media Copy',
@@ -60,4 +56,27 @@ export class SearchComponent implements OnInit {
     '% task rated satifed - low to hight',
     '% task rated satifed - low to hight',
   ];
+  toggle() {
+    this.isToggle = !this.isToggle;
+  }
+  clickOutside(e: any) {
+    this.isToggle = false;
+  }
+  minValue: number = 100;
+  maxValue: number = 400;
+  options: Options = {
+    floor: 0,
+    ceil: 500,
+    translate: (value: number, label: LabelType): string => {
+      switch (label) {
+        case LabelType.Low:
+          return '';
+        case LabelType.High:
+          return '';
+        default:
+          return '';
+      }
+    }
+  };
+
 }

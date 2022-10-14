@@ -61,6 +61,30 @@ i {
   height: 300px;
   overflow:auto;
 }
+.content input[type = 'checkbox'], .content input[type = 'radio'] {
+  display: none;
+}
+.content .checkbox {
+  width: 12px;
+  height: 12px;
+  border: solid 1px #ddd;
+  border-radius: 2px;
+  display: inline-block;
+  padding: 0;
+}
+.content .radio {
+  width: 12px;
+  height: 12px;
+  border: solid 1px #ddd;
+  border-radius: 50%;
+  display: inline-block;
+  padding: 0;
+}
+.content input[type='checkbox']:checked + span, .content input[type='radio']:checked + span {
+  background-color: var(--primary-color);
+  border: solid 1px #fff;
+  box-shadow: 0 0 2px 2px var(--primary-color);
+}
 .content::-webkit-scrollbar
 {
 	width: 10px;
@@ -86,6 +110,12 @@ i {
   width: 400px;
   z-index: 10;
 }
+.search-group:last-child .shared {
+  right: 0;
+}
+.search-group:nth-last-child(2) .shared {
+  left: -45%;
+}
 .list label {
   color: #686d77;
   margin-left: 10px;
@@ -95,7 +125,8 @@ i {
 #category,
 #subCategory,
 #location,
-#emp {
+#emp,
+#price {
   position: absolute;
   opacity: 0;
   height: 0px;
@@ -104,14 +135,16 @@ i {
 #category:checked + .select-category,
 #subCategory:checked + .select-subCategory,
 #location:checked + .select-location,
-#emp:checked + .select-emp {
+#emp:checked + .select-emp,
+#price:checked + .select-price {
   height: 300px;
 }
 #job:not(:checked) + .select-job,
 #category:not(:checked) + .select-categor,
 #subCategory:not(:checked) + .select-subCategory,
 #location:not(:checked) + .select-location,
-#emp:not(:checked) + .select-emp {
+#emp:not(:checked) + .select-emp
+#price:not(:checked) + .select-price  {
   height: 0;
 }
 .select-btn {
@@ -190,13 +223,32 @@ i {
   z-index: 11;
   background: #ffff;
 }
-.dropdown-list a {
-  text-decoration: none;
+.dropdown-list span {
   font-size: 15px;
   padding: 10px;
   color: var(--primary-text);
+  cursor: pointer;
 }
-.dropdown-list a:hover {
+.slider-values {
+  display: flex;
+  align-items: center;
+  font-size: 10px;
+  margin: 0 10px;
+  justify-content: center;
+  gap: 80px;
+}
+.slider-values span {
+  border: 1px solid var(--primary-color);
+  padding: 0 10px;
+  width: 100%;
+  text-align: center;
+}
+.shared .title-price {
+  font-weight: 500;
+  color: var(--primary-text);
+  padding: 10px 20px 0 20px;
+}
+.dropdown-list span:hover {
   font-weight: 600;
   color: var(--primary-color);
 }
@@ -218,6 +270,9 @@ i {
   .search-group span {
     padding: 10px;
     line-height: 50px;
+  }
+  .search-group:nth-last-child(2) .shared {
+    left: -140%;
   }
 
 }
@@ -263,5 +318,8 @@ i {
   }
   .overview-right {
     flex-direction: column;
+  }
+  .search-group:nth-last-child(2) .shared {
+    left: 0;
   }
 }

@@ -20,7 +20,9 @@
       <div class="select-job shared">
         <ul class="job-content content">
           <li *ngFor="let item of job" class="list-job list">
-            <input type="checkbox" id="{{item}}"><label for="{{item}}">{{item}}</label>
+            <input type="checkbox" id="{{item}}">
+            <span class="checkbox"></span>
+            <label for="{{item}}">{{item}}</label>
           </li>
         </ul>
         <div class="select-btn">
@@ -35,7 +37,9 @@
       <div class="select-category shared">
         <ul class="category-content content">
           <li *ngFor="let item of category" class="list-category list">
-            <input type="radio" id="{{item}}" name="category"><label for="{{item}}">{{item}}</label>
+            <input type="radio" id="{{item}}" name="category">
+            <span class="radio"></span>
+            <label for="{{item}}">{{item}}</label>
           </li>
         </ul>
         <div class="select-btn">
@@ -50,7 +54,9 @@
       <div class="select-subCategory shared">
         <ul class="subCategory-content content">
           <li *ngFor="let item of subCategory" class="list-subCategory list">
-            <input type="checkbox" id="{{item}}"><label for="{{item}}">{{item}}</label>
+            <input type="checkbox" id="{{item}}">
+            <span class="checkbox"></span>
+            <label for="{{item}}">{{item}}</label>
           </li>
         </ul>
         <div class="select-btn">
@@ -59,9 +65,23 @@
         </div>
       </div>
     </div>
-    <div class="search-group payment" clickOutside (clickOutside)="showPayment = false">
-      <label for="payment"><span>Payment<i class="fa-solid fa-sort-down"></i></span></label>
-      <!-- <input type="range" min="1" max="50"> -->
+    <div class="search-group payment" clickOutside (clickOutside)="showPrice = false">
+      <label for="price" (click)="showPrice = true"><span>Payment<i class="fa-solid fa-sort-down"></i></span></label>
+      <input type="checkbox" id="price" *ngIf="showPrice">
+      <div class="select-price shared">
+        <span class="title-price">Price Range</span>
+        <div class="custom-slider">
+          <div class="slider-values">
+            <span>${{minValue}}</span>
+            <span>${{maxValue}}</span>
+          </div>
+          <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options"></ngx-slider>
+        </div>
+        <div class="select-btn">
+          <button class="select-btn__clear">CLEAR</button>
+          <button class="select-btn__apply">APPLY</button>
+        </div>
+      </div>
     </div>
     <div class="search-group search-location" clickOutside (clickOutside)="showLocation = false">
       <label for="location" (click)="showLocation = true"><span>Location<i class="fa-solid fa-sort-down"></i></span></label>
@@ -69,7 +89,9 @@
       <div class="select-location shared">
         <ul class="location-content content">
           <li *ngFor="let item of location" class="list-location list">
-            <input type="checkbox" id="{{item}}" name="location"><label for="{{item}}">{{item}}</label>
+            <input type="checkbox" id="{{item}}" name="location">
+            <span class="checkbox"></span>
+            <label for="{{item}}">{{item}}</label>
           </li>
         </ul>
         <div class="select-btn">
@@ -84,7 +106,9 @@
       <div class="select-emp shared">
         <ul class="emp-content content">
           <li *ngFor="let item of emp" class="list-emp list">
-            <input type="checkbox" id="{{item}}" name="emp"><label for="{{item}}">{{item}}</label>
+            <input type="radio" id="{{item}}" name="emp">
+            <span class="radio"></span>
+            <label for="{{item}}">{{item}}</label>
           </li>
         </ul>
         <div class="select-btn">
@@ -102,11 +126,12 @@
       <div class="dropdown" (clickOutside)="clickOutside($event)">
         <label for="" (click)="toggle()" style="cursor: pointer;"><span>Newest<i class="fa-solid fa-sort-down"></i></span></label>
         <div class="dropdown-list" *ngIf="isToggle">
-          <a href="">Newest</a>
-          <a href="">Oldest</a>
-          <a href="">Title</a>
+          <span href="">Newest</span>
+          <span href="">Oldest</span>
+          <span href="">Title</span>
         </div>
       </div>
     </div>
   </div>
+
 </div>

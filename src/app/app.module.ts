@@ -20,6 +20,7 @@ import { PostStep1Component } from './main-pages/post-job/post-step1/post-step1.
 import { ShowResultComponent } from './shared/layout/show-result/show-result.component';
 import { StepComponent } from './shared/layout/step/step.component';
 import { PostStep2Component } from './main-pages/post-job/post-step2/post-step2.component';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -38,13 +39,14 @@ import { PostStep2Component } from './main-pages/post-job/post-step2/post-step2.
     PostStep1Component,
     ShowResultComponent,
     StepComponent,
-    PostStep2Component
+    PostStep2Component,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     MainRoutingModule,
+    NgxSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]

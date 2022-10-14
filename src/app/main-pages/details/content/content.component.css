@@ -20,6 +20,7 @@
 .job-header__title {
   color: var(--second-text);
   font-weight: 500;
+  cursor: pointer;
 }
 .job-header__title span {
   font-size: 10px;
