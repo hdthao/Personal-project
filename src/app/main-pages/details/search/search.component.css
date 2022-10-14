@@ -229,6 +229,26 @@ i {
   color: var(--primary-text);
   cursor: pointer;
 }
+::ng-deep
+  .custom-slider .ngx-slider .ngx-slider-pointer {
+    background-color:var(--primary-color);
+    width: 16px;
+    height: 16px;
+    top: -8px;
+  }
+::ng-deep
+  .custom-slider .ngx-slider .ngx-slider-bar {
+    background: var(--bg-input);
+    height: 2px;
+  }
+::ng-deep
+  .custom-slider .ngx-slider .ngx-slider-selection {
+    background: var(--primary-color);
+  }
+::ng-deep
+  .custom-slider .ngx-slider .ngx-slider-pointer:after {
+    display: none;
+}
 .slider-values {
   display: flex;
   align-items: center;
@@ -321,5 +341,8 @@ i {
   }
   .search-group:nth-last-child(2) .shared {
     left: 0;
+  }
+  .slider-values span{
+    display: block;
   }
 }
