@@ -22,3 +22,9 @@ body {
   --bg-btn:#15d164;
   --color-lable: #abb3c1;
 }
+.authentication {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
