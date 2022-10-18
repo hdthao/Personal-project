@@ -20,7 +20,7 @@
 		outline: none;
 		padding: 0 10px;
 		width: 100%;
-		font-size: 15px;
+		font-size: 14px;
 	}
 	input {
 		&:focus {
@@ -35,7 +35,7 @@
 		padding: 0 30px;
 		color: #686d77;
 		font-weight: 400;
-		font-size: 15px;
+		font-size: 14px;
 		&:focus {
 			border-bottom: 2px solid var(--primary-color);
 		}
@@ -45,7 +45,7 @@
 	label {
 		color: var(--color-lable);
 		font-weight: 500;
-		font-size: 15px;
+		font-size: 14px;
 		margin-bottom: 10px;
 	}
 	span {
@@ -99,7 +99,7 @@ input[type='password'] {
 	gap: 10px;
 	align-items: center;
 	label {
-		font-size: 15px;
+		font-size: 14px;
 		color: var(--primary-text);
 		cursor: pointer;
 	}
@@ -128,7 +128,7 @@ input[type='password'] {
 	}
 	span {
 		color: var(--primary-text);
-		font-size: 15px;
+		font-size: 14px;
 	}
 }
 .group-check {
@@ -137,7 +137,7 @@ input[type='password'] {
 	align-items: center;
 	label {
 		color: #686d77;
-		font-size: 15px;
+		font-size: 14px;
 		cursor: pointer;
 	}
 	input[type='checkbox'] {
@@ -167,15 +167,17 @@ input[type='password'] {
 	background: var(--primary-color);
 	font-weight: 600;
 	color: #ffff;
-	font-size: 15px;
+	font-size: 14px;
 	cursor: pointer;
 }
 .form-footer__text {
 	margin-top: 20px;
+	font-size: 14px;
 	color: var(--primary-text);
 }
 .link {
 	color: var(--primary-color);
+	font-size: 14px;
 }
 @media screen and (min-width: 768px) {
 	.container {

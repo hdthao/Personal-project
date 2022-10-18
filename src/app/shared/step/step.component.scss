@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   position: relative;
-  z-index: -2;
+  z-index: 1;
 
   button {
     padding: 0 20px;
@@ -17,7 +17,7 @@
     border: none;
     background: transparent;
     gap: 10px;
-
+    cursor: pointer;
     i {
       transform: translateY(2px);
     }

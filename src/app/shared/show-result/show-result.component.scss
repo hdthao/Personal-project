@@ -21,23 +21,24 @@
     font-weight: 500;
     color: var(--primary-text);
     margin: 20px 0;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   span {
     font-weight: 300;
+    font-size: 14px;
   }
 }
 
 #style-4 {
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: var(--color-lable);
-    border-radius: 10px;
+    border-radius: 6px;
     border: 2px solid transparent;
   }
 }
@@ -55,4 +56,5 @@
   background: var(--second-color);
   border: none;
   margin-top: 20px;
+  cursor: pointer;
 }

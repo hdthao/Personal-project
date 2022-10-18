@@ -53,8 +53,8 @@ i {
   span {
     color: #686d77;
     cursor: pointer;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     padding: 20px;
     line-height: 50px;
 
@@ -83,6 +83,7 @@ i {
     color: #686d77;
     margin-left: 10px;
     cursor: pointer;
+    font-size: 14px;
   }
 }
 
@@ -129,13 +130,13 @@ i {
   }
 
   &::-webkit-scrollbar {
-    width: 10px;
+    width: 6px;
     background-color: transparent;
   }
 
   &::-webkit-scrollbar-thumb {
     background-color: var(--color-lable);
-    border-radius: 10px;
+    border-radius: 6px;
     border: 2px solid transparent;
   }
 }
@@ -280,7 +281,7 @@ i {
     border: none;
     outline: none;
     padding: 0 10px;
-    font-size: 15px;
+    font-size: 14px;
   }
 }
 
@@ -291,20 +292,21 @@ i {
   position: relative;
 
   label {
-    font-weight: 600;
-    font-size: 15px;
+    font-weight: 500;
+    font-size: 14px;
     color: var(--second-text);
   }
 }
 
 .show-result {
-  font-weight: 500;
+  font-weight: 400;
+  font-size: 14px;
 }
 
 .dropdown {
   span {
-    font-weight: 20px;
-    font-size: 600;
+    font-weight: 400;
+    font-size: 14px;
     color: var(--primary-color);
 
     i {
@@ -327,13 +329,13 @@ i {
   background: #ffff;
 
   span {
-    font-size: 15px;
+    font-size: 14px;
     padding: 10px;
     color: var(--primary-text);
     cursor: pointer;
 
     &:hover {
-      font-weight: 600;
+      font-weight: 400;
       color: var(--primary-color);
     }
   }
@@ -376,7 +378,7 @@ i {
   span {
     border: 1px solid var(--primary-color);
     padding: 0 10px;
-    width: 100%;
+    width: 60%;
     text-align: center;
   }
 }

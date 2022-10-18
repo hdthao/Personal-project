@@ -62,7 +62,7 @@
 		display: inline-block;
 	}
 	label {
-		font-size: 15px;
+		font-size: 14px;
 		color: var(--primary-text);
 		cursor: pointer;
 	}
@@ -76,6 +76,7 @@ input {
 }
 .link {
 	color: var(--primary-color);
+	font-size: 14px;
 }
 .form-footer {
 	text-align: center;
@@ -93,6 +94,7 @@ input {
 }
 .form-footer__text {
 	margin-top: 30px;
+	font-size: 14px;
 	color: var(--primary-text);
 }
 @media screen and (min-width: 440px) {

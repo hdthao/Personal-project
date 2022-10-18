@@ -45,15 +45,17 @@
     color: var(--primary-text);
     padding: 20px;
     text-decoration: none;
+    font-size: 14px;
   }
 }
 
 .menu-bottom {
   a {
     color: var(--color-lable);
-    font-weight: 500;
+    font-weight: 400;
     text-decoration: none;
     padding: 20px;
+    font-size: 14px;
   }
 }
 
@@ -61,7 +63,7 @@
   cursor: pointer;
   color: var(--second-text);
   font-weight: 500;
-  font-size: 15px;
+  font-size: 14px;
 
   &::after {
     display: block;
@@ -87,7 +89,7 @@
   span {
     color: var(--second-text);
     font-weight: 500;
-    font-size: 15px;
+    font-size: 14px;
   }
 
   display: flex;
@@ -100,6 +102,7 @@
 
   i {
     margin-right: 25px;
+    cursor: pointer;
   }
 
   img {
@@ -107,6 +110,7 @@
     height: 20px;
     border-radius: 50%;
     margin-right: 20px;
+    cursor: pointer;
   }
 
   span {
@@ -180,7 +184,7 @@ input {
 .btn {
   padding: 10px 28px;
   background: var(--primary-color);
-  font-weight: 600;
+  font-weight: 500;
   border: none;
   color: #ffff;
   border-radius: 2px;
@@ -200,7 +204,7 @@ input {
 .notice-right {
   span {
     color: #cf9e50;
-    font-size: 15px;
+    font-size: 14px;
     cursor: pointer;
     padding: 0 5px;
 
@@ -214,7 +218,7 @@ input {
 .notice-left {
   span {
     color: #cf9e50;
-    font-size: 15px;
+    font-size: 14px;
     cursor: pointer;
     padding: 0 5px;
   }
@@ -222,6 +226,7 @@ input {
   p {
     color: var(--primary-text);
     font-weight: 500;
+    font-size: 14px;
   }
 }
 

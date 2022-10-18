@@ -8,6 +8,11 @@
 	border-left: 2px solid rgb(150, 13, 155);
 	background: #fbf9ff;
 	margin-bottom: 20px;
+	cursor: pointer;
+	&:hover {
+		transition: .2s ease-in-out;
+		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
 }
 .job-header {
 	display: flex;
@@ -26,12 +31,13 @@
 	color: var(--second-text);
 	font-weight: 500;
 	cursor: pointer;
+	font-size: 15px;
 	span {
 		font-size: 10px;
-		font-weight: 600;
+		font-weight: 500;
 		color: #ffff;
 		background: #6a2af5;
-		padding: 3px;
+		padding: 2px 3px;
 		border-radius: 2px;
 	}
 }
@@ -47,8 +53,8 @@
 	gap: 20px;
 	p {
 		color: #686d77;
-		font-size: 15px;
-		font-weight: 500;
+		font-size: 13px;
+		font-weight: 400;
 	}
 	span {
 		color: #155759;
@@ -58,7 +64,7 @@
 		background: var(--bg-input);
 	}
 	i {
-		font-size: 12px;
+		font-size: 10px;
 		padding: 2px;
 		background: var(--bg-input);
 	}
@@ -69,23 +75,28 @@
 	gap: 20px;
 	i {
 		color: #686d77;
+		font-size: 10px;
 	}
 }
 .job-infor__done {
+	p {
+		font-size: 14px;
+	}
 	span {
 		color: var(--primary-text);
-		font-weight: 700;
+		font-weight: 500;
+		font-size: 14px;
 	}
 }
 .job-infor__rate {
 	small {
-		font-size: 15px;
+		font-size: 14px;
 		font-weight: 300;
 	}
 	span {
 		font-weight: 500;
 		color: #686d77;
-		font-size: 15px;
+		font-size: 14px;
 	}
 }
 @media screen and (min-width: 1080px) {
