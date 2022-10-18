@@ -6,7 +6,6 @@ import { ContentComponent } from './detail-job/content/content.component';
 import { SearchComponent } from './detail-job/search/search.component';
 import { PostStep1Component } from './post-job/post-step1/post-step1.component';
 import { PostStep2Component } from './post-job/post-step2/post-step2.component';
-import { FooterComponent } from 'src/app/layout/footer/footer.component';
 import { JobRoutingModule } from './job.routing.module';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
 

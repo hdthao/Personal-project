@@ -1,15 +1,17 @@
-//Install express server
-const express = require('express');
-const path = require('path');
+const express = require("express");
+const serveStatic = require("serve-static");
+const path = require("path");
 
 const app = express();
 
-// Serve only the static files form the dist directory
-app.use(express.static('./dist/personal-project'));
+//here we are configuring dist to serve app files
+app.use("/", serveStatic(path.join(__dirname, "/dist")));
 
-app.get('/*', (req, res) =>
-    res.sendFile('index.html', {root: 'dist/personal-project/'}),
-);
+// this * route is to serve project on different page routes except root `/`
+app.get(/.*/, function (req, res) {
+  res.sendFile(path.join(__dirname, "/dist/index.html"));
+});
 
-// Start the app by listening on the default Heroku port
-app.listen(process.env.PORT || 8080);
+const port = process.env.PORT || 8080;
+app.listen(port);
+console.log(`app is listening on port: ${port}`);
