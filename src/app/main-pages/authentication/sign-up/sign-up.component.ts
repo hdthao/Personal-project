@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/core/services/api.service';
-import { User } from 'src/app/core/module/users';
-import { checkEmail, checkPass, comparePass, MustMatch } from '../../validator/validator';
+import { UserSevices } from 'src/app/core/model-user/user.service';
+import { checkEmail, checkPass, MustMatch } from '../../../shared/validator/validator';
 
 @Component({
   selector: 'app-sign-up',
   templateUrl: './sign-up.component.html',
-  styleUrls: ['./sign-up.component.css'],
+  styleUrls: ['./sign-up.component.scss'],
 })
 export class SignUpComponent implements OnInit {
   form: FormGroup;
@@ -16,7 +15,7 @@ export class SignUpComponent implements OnInit {
   constructor(
     private router: Router,
     private fb: FormBuilder,
-    private services: ApiService
+    private userService: UserSevices
   ) {}
   ngOnInit(): void {
     this.form = this.fb.group({
@@ -52,7 +51,7 @@ export class SignUpComponent implements OnInit {
     }
   }
   postUser() {
-    this.services.postUser(this.form.value).subscribe((data) => {
+    this.userService.postUser(this.form.value).subscribe((data) => {
       this.router.navigate(['/login']);
     });
   }

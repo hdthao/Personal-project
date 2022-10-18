@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-forgot-pw',
   templateUrl: './forgot-pw.component.html',
-  styleUrls: ['./forgot-pw.component.css']
+  styleUrls: ['./forgot-pw.component.scss']
 })
 export class ForgotPwComponent implements OnInit {
 

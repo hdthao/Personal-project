@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { ApiService } from 'src/app/core/services/api.service';
+import { UserSevices } from 'src/app/core/model-user/user.service';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css'],
+  styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
   isSubmitted = false;
   form: FormGroup;
   constructor(
     private router: Router,
-    private services: ApiService,
+    private userService: UserSevices,
     private fb: FormBuilder
   ) {}
   ngOnInit(): void {
@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
     }
   }
   onLogin() {
-    this.services.getUser(this.form.value).subscribe((data: any) => {
+    this.userService.getUser(this.form.value).subscribe((data: any) => {
       localStorage.setItem('userToken', data.data.token);
       this.router.navigate(['/details']);
     });

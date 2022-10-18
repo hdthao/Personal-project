@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-detail-header',
   templateUrl: './detail-header.component.html',
-  styleUrls: ['./detail-header.component.css']
+  styleUrls: ['./detail-header.component.scss']
 })
 export class DetailHeaderComponent implements OnInit {
   isShow = false;

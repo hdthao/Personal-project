@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-post-step1',
   templateUrl: './post-step1.component.html',
-  styleUrls: ['./post-step1.component.css']
+  styleUrls: ['./post-step1.component.scss']
 })
 export class PostStep1Component implements OnInit {
 

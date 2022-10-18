@@ -2,71 +2,89 @@
   padding: 80px 20.2%;
   background: var(--bg-color);
 }
+
 .footer__top {
   display: flex;
   padding: 0 20px 50px;
   justify-content: space-between;
 }
+
 .footer__nav {
   display: flex;
   justify-content: space-between;
   gap: 12px;
   align-items: center;
 }
+
 .nav-item {
   padding: 0 20px;
 }
+
 .nav-item__link {
   text-decoration: none;
   color: var(--second-text);
   font-size: 15px;
+
+  &::after {
+    display: block;
+    content: '';
+    margin-top: 3px;
+    border-bottom: solid 2px var(--primary-color);
+    transform: scaleX(0);
+    transition: .25s ease-in-out;
+  }
+
+  &:hover {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
 }
-.nav-item__link::after {
-  display:block;
-  content: '';
-  margin-top: 3px;
-  border-bottom: solid 2px var(--primary-color);
-  transform: scaleX(0);
-  transition: .25s ease-in-out;
-}
-.nav-item__link:hover::after {
-  transform: scaleX(1);
-}
+
 .footer__bottom {
   display: flex;
   justify-content: space-between;
 }
+
 .footer-text {
   color: #7e7e7e;
   font-size: 15px;
 }
+
 .social-link {
   padding: 13px;
   margin: 8px;
+
+  i {
+    color: #7e7e7e;
+
+    &:hover {
+      color: var(--primary-color);
+    }
+  }
 }
-.social-link i {
-  color: #7e7e7e;
-}
-.social-link i:hover {
-  color: var(--primary-color);
-}
+
 .footer__provider {
- margin-top: 20px;
+  margin-top: 20px;
+
+  span {
+    color: #7e7e7e;
+    font-size: 12px;
+  }
 }
-.footer__provider span {
-  color: #7e7e7e;
-  font-size: 12px;
-}
+
 @media screen and (min-width:1080px) {
   .footer {
     padding: 80px calc((100% - 1080px) / 2);
   }
 }
+
 @media screen and (max-width:1079px) {
   .footer {
     padding: 80px 5%;
   }
 }
+
 @media screen and (max-width:767px) {
   .footer__top {
     flex-direction: column;
@@ -74,23 +92,26 @@
     align-items: center;
     gap: 35px;
   }
+
   .nav-item {
     padding: 0 5px;
   }
+
   .footer__bottom {
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 35px;
   }
+
   .footer__provider {
     text-align: center;
   }
 }
-@media screen and (max-width: 460px) {
-    .footer__nav {
-      flex-direction: column;
-      gap: 20px;
-    }
-}
 
+@media screen and (max-width: 460px) {
+  .footer__nav {
+    flex-direction: column;
+    gap: 20px;
+  }
+}

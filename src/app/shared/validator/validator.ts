@@ -1,4 +1,7 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
+import { ApiService } from 'src/app/core/services/api.service';
+import { map } from 'rxjs';
+import { UserSevices } from 'src/app/core/model-user/user.service';
 
 export function checkEmail(c: AbstractControl) {
   const rexEmail = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/;
@@ -26,4 +29,9 @@ export function MustMatch(controlName: string, matchingControlName: string) {
           matchingControl.setErrors(null);
       }
   }
+}
+export function duplicate( control: AbstractControl, api: UserSevices) {
+    let rs = api.getUser(control).pipe(map((data) => {
+
+    }))
 }
