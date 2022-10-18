@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserSevices } from 'src/app/core/model-user/user.service';
-import { checkEmail, checkPass, MustMatch } from '../../../shared/validator/validator';
+import { checkEmail, checkPass, MustMatch } from '../../shared/validator/validator';
 
 @Component({
   selector: 'app-sign-up',
