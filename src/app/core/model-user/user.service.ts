@@ -2,18 +2,18 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { User } from 'src/app/model/users';
 import { map } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserSevices {
   constructor( private http: HttpClient) { }
-  SIGN_URL = 'http://103.18.7.212:1734/auth/register';
-  LOGIN_URL = 'http://103.18.7.212:1734/auth/login';
+  private apiUrl = environment.apiUrl;
   postUser(data: User) {
-    return this.http.post<User>(this.SIGN_URL, data);
+    return this.http.post<User>(`${this.apiUrl}/auth/register`, data);
   }
   getUser(data: any) {
-    return this.http.post(this.LOGIN_URL, data);
+    return this.http.post(`${this.apiUrl}/auth/login`, data);
   }
 }

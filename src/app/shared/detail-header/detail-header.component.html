@@ -19,10 +19,7 @@
     </ul>
     <div class="nav-notification">
       <div class="switch-role">
-        <label class="switch">
-          <input type="checkbox" checked>
-          <span class="slider round" (click)="onSwitch()"></span>
-        </label>
+        <input type="checkbox" id="switch" /><label for="switch" id="switch-label" (click)="onSwitch()"></label>
         <span>Switch Role</span>
       </div>
       <div class="notification">
@@ -75,10 +72,7 @@
       <label for="showMenu"><i class="fa-solid fa-xmark"></i></label>
     </div>
     <div class="switch-role res-role">
-      <label class="switch">
-        <input type="checkbox" checked>
-        <span class="slider round"></span>
-      </label>
+      <input type="checkbox" id="resswitch" /><label for="resswitch" id="resswitch-label" (click)="onSwitch()"></label>
       <span>Switch Role</span>
     </div>
     <ul class="res-menu">

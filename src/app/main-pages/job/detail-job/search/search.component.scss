@@ -38,6 +38,18 @@ i {
   display: flex;
   align-items: flex-end;
   gap: 10px;
+  .fa-pause {
+    transform:rotate(90deg);
+    font-size: 18px;
+  }
+  .fa-barcode {
+    transform:rotate(90deg);
+    margin-bottom: 2px;
+    display: block;
+  }
+  span {
+    height: 18px;
+  }
 }
 
 .search-content {
