@@ -26,6 +26,7 @@
               <span *ngIf="f['email'].errors?.['emailInvalid'] && !f['email'].errors?.['required']">
                 Email is invalid
               </span>
+              <span *ngIf="existEmail">Email record has exist</span>
             </ng-container>
           </div>
         </div>

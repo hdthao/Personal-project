@@ -1,6 +1,6 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
 import { ApiService } from 'src/app/core/services/api.service';
-import { map } from 'rxjs';
+import { map, switchMap, timer } from 'rxjs';
 import { UserSevices } from 'src/app/core/model-user/user.service';
 
 export function checkEmail(c: AbstractControl) {
@@ -30,8 +30,10 @@ export function MustMatch(controlName: string, matchingControlName: string) {
       }
   }
 }
-export function duplicate( control: AbstractControl, api: UserSevices) {
-    let rs = api.getUser(control).pipe(map((data) => {
-
-    }))
+export function duplicate( api: UserSevices) {
+    return (control: AbstractControl) => {
+      return api.getUser(control).subscribe((data) => {
+        return data ? null : {dupalicated: true};
+      })
+    }
 }

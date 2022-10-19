@@ -32,6 +32,10 @@ i {
     padding: 10px 20px;
     color: #ffff;
   }
+
+  &:not(:first-child):hover {
+    color: var(--primary-text);
+  }
 }
 
 .overview-left {
@@ -96,6 +100,9 @@ i {
     margin-left: 10px;
     cursor: pointer;
     font-size: 14px;
+    &:hover {
+      color: var(--primary-text);
+    }
   }
 }
 
@@ -468,6 +475,7 @@ i {
 
     input[type="text"] {
       width: 100%;
+      margin: 10px;
     }
   }
 

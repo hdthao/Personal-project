@@ -1,5 +1,8 @@
 <div class="authentication">
   <app-header></app-header>
+  <div class="showErrors" *ngIf="isValid">
+    <span>Invalid email/password credentials. <i class="fa-solid fa-xmark" (click)="isValid = false"></i></span>
+  </div>
   <div class="container">
     <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <h2 class="form-header">Login</h2>
@@ -9,7 +12,6 @@
           <input type="text" placeholder="Enter your email"
           formControlName = "email"
           >
-          <!-- <span>loi</span> -->
         </div>
         <div class="form-group">
           <label for="">Password</label>

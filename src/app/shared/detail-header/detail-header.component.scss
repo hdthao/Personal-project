@@ -46,11 +46,13 @@
     padding: 20px;
     text-decoration: none;
     font-size: 14px;
+  }:hover {
+    font-weight: 700;
   }
 }
 
 .menu-bottom {
-  a {
+  span {
     color: var(--color-lable);
     font-weight: 400;
     text-decoration: none;
@@ -103,6 +105,9 @@
   i {
     margin-right: 25px;
     cursor: pointer;
+    &:hover {
+      color: gray;
+    }
   }
 
   img {
@@ -120,8 +125,8 @@
 
 .menu-bar {
   i {
-    border: 1px solid gray;
-    color: gray;
+    border: 1px solid #6f747c59;
+    color: #6f747c59;
     padding: 4px;
     display: none;
   }

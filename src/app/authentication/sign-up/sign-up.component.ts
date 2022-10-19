@@ -12,6 +12,7 @@ import { checkEmail, checkPass, MustMatch } from '../../shared/validator/validat
 export class SignUpComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
+  existEmail = false;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -53,7 +54,14 @@ export class SignUpComponent implements OnInit {
   postUser() {
     this.userService.postUser(this.form.value).subscribe((data) => {
       this.router.navigate(['/login']);
-    });
+    },
+    (errors) => {
+      switch(errors.error.message[0].message) {
+        case 'email record has exist':
+          this.existEmail = true;
+      }
+    }
+    );
   }
   onLogin() {
     this.router.navigate(['/login']);
