@@ -89,9 +89,22 @@
 	}
 }
 .job-infor__rate {
+	.price {
+		display: flex;
+		align-items: center;
+		& span {
+			font-weight: 300;
+			color: var(--primary-text);
+		}
+	}
+	p {
+		font-weight: 600;
+		font-size: 20px;
+	}
 	small {
 		font-size: 14px;
 		font-weight: 300;
+		transform: translateY(2px);
 	}
 	span {
 		font-weight: 500;
