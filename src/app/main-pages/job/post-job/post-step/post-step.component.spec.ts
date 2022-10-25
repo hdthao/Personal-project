@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { PostStep1Component } from './post-step1.component';
+import { PostStepComponent } from './post-step.component';
 
-describe('PostStep1Component', () => {
-  let component: PostStep1Component;
-  let fixture: ComponentFixture<PostStep1Component>;
+describe('PostStepComponent', () => {
+  let component: PostStepComponent;
+  let fixture: ComponentFixture<PostStepComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ PostStep1Component ]
+      declarations: [ PostStepComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(PostStep1Component);
+    fixture = TestBed.createComponent(PostStepComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

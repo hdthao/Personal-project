@@ -42,15 +42,18 @@ i {
   display: flex;
   align-items: flex-end;
   gap: 10px;
+
   .fa-pause {
-    transform:rotate(90deg);
+    transform: rotate(90deg);
     font-size: 18px;
   }
+
   .fa-barcode {
-    transform:rotate(90deg);
+    transform: rotate(90deg);
     margin-bottom: 2px;
     display: block;
   }
+
   span {
     height: 18px;
   }
@@ -87,7 +90,7 @@ i {
 
   &:nth-last-child(2) {
     .shared {
-      left: -45%;
+      left: -48%;
     }
   }
 }
@@ -100,6 +103,7 @@ i {
     margin-left: 10px;
     cursor: pointer;
     font-size: 14px;
+
     &:hover {
       color: var(--primary-text);
     }
@@ -323,8 +327,10 @@ i {
 }
 
 .dropdown {
+  min-width: 100px;
+
   span {
-    font-weight: 400;
+    font-weight: 500;
     font-size: 14px;
     color: var(--primary-color);
 

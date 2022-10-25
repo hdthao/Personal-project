@@ -1,17 +1,27 @@
-import { HttpClient } from "@angular/common/http";
-import { environment } from "src/environments/environment";
+import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class JobService {
-  constructor( private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
   private apiUrl = environment.apiUrl;
+
   getCountry() {
-    return this.http.get(`${this.apiUrl}/api/countries`)
+    return this.http.get(`${this.apiUrl}/api/countries`);
   }
-  getTargetZone(data:any) {
+
+  getTargetZone(data: any) {
     return this.http.get(`${this.apiUrl}/api/countries?target_zone=${data} `);
+  }
+
+  postJob(data: any) {
+    return this.http.post(`${this.apiUrl}/api/jobs/create`, data);
+  }
+
+  getJobList(data: any) {
+    return this.http.post(`${this.apiUrl}/api/jobs/list`, data);
   }
 }

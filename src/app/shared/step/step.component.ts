@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 export class StepComponent implements OnInit {
   @Input() switchStep = false;
   @Output() changStep = new EventEmitter();
+
   constructor( private router: Router) { }
 
   ngOnInit(): void {

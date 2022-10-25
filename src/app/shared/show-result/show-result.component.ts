@@ -10,8 +10,11 @@ export class ShowResultComponent implements OnInit {
   @Input() listTargetZone: string = '';
   @Input() category: string = '';
   @Input() subCategory: string = '';
+
   constructor() {}
+
   ngOnInit(): void {}
+
   clear() {
     this.listCountry.splice(0);
     this.listTargetZone = '';

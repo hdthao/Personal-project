@@ -16,9 +16,19 @@ export class SignUpComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
   existEmail = false;
-  seriesList: any[] = ['Viet Nam', 'Thai Land', 'China'];
+  seriesList: any[] = [
+    'Viet Nam',
+    'Thai Land',
+    'China',
+    'Philippines',
+    'Pakistan',
+    'Honduras',
+    'Iceland',
+    'Hungary',
+  ];
   country = 'Select Country';
   isShowDropdown = true;
+
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -49,9 +59,11 @@ export class SignUpComponent implements OnInit {
       }
     );
   }
+
   get f() {
     return this.form.controls;
   }
+
   onSubmit() {
     this.isSubmitted = true;
     if (this.form.invalid) {
@@ -61,6 +73,7 @@ export class SignUpComponent implements OnInit {
       this.postUser();
     }
   }
+
   postUser() {
     this.userService.postUser(this.form.value).subscribe(
       (data) => {
@@ -74,9 +87,11 @@ export class SignUpComponent implements OnInit {
       }
     );
   }
+
   onLogin() {
     this.router.navigate(['/login']);
   }
+
   getListCountry(data: any) {
     this.country = data;
     this.isShowDropdown = true;

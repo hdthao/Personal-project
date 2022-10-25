@@ -1,132 +1,179 @@
 .container {
-	padding: 0 21.5%;
-	margin: 20px 0;
+  padding: 0 21.5%;
+  margin: 20px 0;
 }
+
 .details-job {
-	padding: 30px;
-	border-radius: 5px;
-	border-left: 2px solid rgb(150, 13, 155);
-	background: #fbf9ff;
-	margin-bottom: 20px;
-	cursor: pointer;
-	&:hover {
-		transition: .2s ease-in-out;
-		box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  padding: 30px;
+  border-radius: 5px;
+  border-left: 2px solid rgb(150, 13, 155);
+  background: #fbf9ff;
+  margin-bottom: 20px;
+  cursor: pointer;
+
+  &:hover {
+    transition: .2s ease-in-out;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  }
 }
-}
+
 .job-header {
-	display: flex;
-	justify-content: space-between;
+  display: flex;
+  justify-content: space-between;
 }
+
 .job-icon {
-	i {
-		margin: 0 10px;
-		color: #686d77;
-	}
-	display: flex;
-	justify-content: space-between;
-	cursor: pointer;
+  i {
+    margin: 0 10px;
+    color: #686d77;
+  }
+
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
 }
+
 .job-header__title {
-	color: var(--second-text);
-	font-weight: 500;
-	cursor: pointer;
-	font-size: 15px;
-	span {
-		font-size: 10px;
-		font-weight: 500;
-		color: #ffff;
-		background: #6a2af5;
-		padding: 2px 3px;
-		border-radius: 2px;
-	}
+  color: var(--second-text);
+  font-weight: 500;
+  cursor: pointer;
+  font-size: 15px;
+
+  span {
+    font-size: 10px;
+    font-weight: 500;
+    color: #ffff;
+    background: #6a2af5;
+    padding: 2px 3px;
+    border-radius: 2px;
+  }
 }
+
 .job-infor {
-	display: flex;
-	justify-content: space-between;
-	margin-top: 30px;
-	align-items: center;
-	flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+  align-items: center;
+  flex-wrap: wrap;
 }
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  min-width: 60%;
+
+  .job-infor__category {
+    display: flex;
+    gap: 10px;
+
+    p {
+      padding: 10px;
+      background: #f5f7fa;
+      border-radius: 5px;
+    }
+
+    span {
+      font-weight: 500;
+      color: var(--primary-text);
+    }
+  }
+}
+
 .job-infor__bar {
-	display: flex;
-	gap: 20px;
-	p {
-		color: #686d77;
-		font-size: 13px;
-		font-weight: 400;
-	}
-	span {
-		color: #155759;
-		padding: 2px;
-		font-size: 10px;
-		font-weight: 700;
-		background: var(--bg-input);
-	}
-	i {
-		font-size: 10px;
-		padding: 2px;
-		background: var(--bg-input);
-	}
+  display: flex;
+  gap: 20px;
+
+  p {
+    color: #686d77;
+    font-size: 13px;
+    font-weight: 400;
+  }
+
+  span {
+    color: #155759;
+    padding: 2px;
+    font-size: 10px;
+    font-weight: 700;
+    background: var(--bg-input);
+  }
+
+  i {
+    font-size: 10px;
+    padding: 2px;
+    background: var(--bg-input);
+  }
 }
+
 .job-infor__icon {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-	i {
-		color: #686d77;
-		font-size: 10px;
-	}
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  i {
+    color: #686d77;
+    font-size: 10px;
+  }
 }
+
 .job-infor__done {
-	p {
-		font-size: 14px;
-	}
-	span {
-		color: var(--primary-text);
-		font-weight: 500;
-		font-size: 14px;
-	}
+  p {
+    font-size: 14px;
+  }
+
+  span {
+    color: var(--primary-text);
+    font-weight: 500;
+    font-size: 14px;
+  }
 }
+
 .job-infor__rate {
-	.price {
-		display: flex;
-		& span {
-			font-weight: 300;
-			color: var(--primary-text);
-			transform: translateY(1px);
-		}
-	}
-	p {
-		font-weight: 600;
-		font-size: 20px;
-	}
-	small {
-		font-size: 14px;
-		font-weight: 300;
-		transform: translateY(2px);
-	}
-	span {
-		font-weight: 500;
-		color: #686d77;
-		font-size: 14px;
-	}
+  .price {
+    display: flex;
+
+    & span {
+      font-weight: 300;
+      color: var(--primary-text);
+      transform: translateY(1px);
+    }
+  }
+
+  p {
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  small {
+    font-size: 14px;
+    font-weight: 300;
+    transform: translateY(2px);
+  }
+
+  span {
+    font-weight: 500;
+    color: #686d77;
+    font-size: 14px;
+  }
 }
+
 @media screen and (min-width: 1080px) {
-	.container {
-		padding: 0 calc((100% - 1080px) / 2);
-		margin: 20px 0;
-	}
+  .container {
+    padding: 0 calc((100% - 1080px) / 2);
+    margin: 20px 0;
+  }
 }
+
 @media screen and (min-width: 768px) and (max-width: 1079px) {
-	.container {
-		padding: 0 2%;
-		margin: 20px 0;
-	}
+  .container {
+    padding: 0 2%;
+    margin: 20px 0;
+  }
 }
+
 @media screen and (max-width: 767px) {
-	.container {
-		padding: 0 2%;
-		margin: 20px 0;
-	}
+  .container {
+    padding: 0 2%;
+    margin: 20px 0;
+  }
 }

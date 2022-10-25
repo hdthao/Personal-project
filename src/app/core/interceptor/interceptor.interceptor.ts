@@ -21,7 +21,5 @@ export class InterceptorInterceptor implements HttpInterceptor {
       return next.handle(au);
     }
     return next.handle(request);
-
-
   }
 }

@@ -1,18 +1,12 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DetailsComponent } from './detail-job/details.component';
-import { PostStep1Component } from './post-job/post-step1/post-step1.component';
+import { PostStepComponent } from './post-job/post-step/post-step.component';
 import { PostStep2Component } from './post-job/post-step2/post-step2.component';
 
 const routes: Routes = [
-  { path: 'details', component: DetailsComponent },
-  {
-    path: 'post',
-    children: [
-      { path: '', pathMatch: 'full', component: PostStep1Component },
-      // { path: 'step2', component: PostStep2Component },
-    ],
-  },
+  { path: 'detail-job', component: DetailsComponent },
+  { path: 'post', component: PostStepComponent },
 ];
 
 @NgModule({

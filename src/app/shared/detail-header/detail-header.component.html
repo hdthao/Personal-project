@@ -1,25 +1,60 @@
+<div class="main-container" *ngIf="showAlert">
+  <div class="containerz">
+    <div class="success-checkmark">
+      <div class="check-icon">
+        <span class="icon-line line-tip"></span>
+        <span class="icon-line line-long"></span>
+        <div class="icon-circle"></div>
+        <div class="icon-fix"></div>
+      </div>
+      <p>Done!</p>
+    </div>
+    <span>You had Switched {{ role }}!</span>
+    <button>UNDERSTOOD</button>
+  </div>
+</div>
 <header class="header">
   <div class="nav">
-    <a href=""><img src="https://sproutgigs.com/assets/images/logo-sg.svg" alt="" class="nav__logo"></a>
+    <a href=""
+      ><img
+        src="https://sproutgigs.com/assets/images/logo-sg.svg"
+        alt=""
+        class="nav__logo"
+    /></a>
     <ul class="nav-menu">
-      <li class="menu-item"><span class="menu-item__link" (click)="showDropdown()" (clickOutside)="outSide($event)" style="cursor:pointer;">My Tasks <i class="fa-solid fa-sort-down"></i></span></li>
+      <li class="menu-item">
+        <span
+          class="menu-item__link"
+          (click)="showDropdown()"
+          (clickOutside)="outSide($event)"
+          style="cursor: pointer"
+          >My Tasks <i class="fa-solid fa-sort-down"></i
+        ></span>
+      </li>
       <li class="menu-item"><span class="menu-item__link">Wallet</span></li>
-      <div class="dropdown-menu" *ngIf="isShow">
+      <div class="dropdown-menu" *ngIf="isShowDropdown">
         <div class="menu-top item-dropdown">
           <a href="">Find job </a>
           <a href="">Finished Tasks <span>0</span></a>
         </div>
-        <hr>
+        <hr />
         <div class="menu-bottom item-dropdown">
           <span href="">satisfied + paid <span>0</span></span>
           <span href="">Pending review <span>0</span></span>
         </div>
-
       </div>
     </ul>
+
     <div class="nav-notification">
       <div class="switch-role">
-        <input type="checkbox" id="switch" /><label for="switch" id="switch-label" (click)="onSwitch()"></label>
+        <input
+          type="checkbox"
+          id="switch"
+          (click)="onSwitch()"
+          class="switch"
+          [checked]="isSwitch"
+        />
+        <label for="switch" id="switch-label" class="switch-label"> </label>
         <span>Switch Role</span>
       </div>
       <div class="notification">
@@ -35,9 +70,17 @@
           <span>View Log</span>
           <i class="fa-regular fa-clock"></i>
         </div>
-        <div class="noti-profile feature">
+        <div
+          class="noti-profile feature"
+          clickOutside
+          (clickOutside)="isShowProfile = false"
+        >
           <span>Profile</span>
-          <img src="https://sproutgigs.com/assets/images/profile_no_image.gif" alt="">
+          <img
+            src="https://sproutgigs.com/assets/images/profile_no_image.gif"
+            alt=""
+            (click)="showProfile()"
+          />
         </div>
         <div class="menu-bar">
           <label for="showMenu"><i class="fa-solid fa-bars"></i></label>
@@ -47,10 +90,21 @@
         </div>
       </div>
     </div>
-    <button class="btn btn-post" *ngIf="isSwitch" (click) = "gotoPost()">POST JOBS</button>
-    <button class="btn btn-find" *ngIf="!isSwitch" (click) = "gotoFind()">FIND JOBS</button>
+    <button class="btn btn-post" *ngIf="isSwitch" (click)="gotoPost()">
+      POST JOBS
+    </button>
+    <button class="btn btn-find" *ngIf="!isSwitch" (click)="gotoFind()">
+      FIND JOBS
+    </button>
   </div>
 </header>
+<div class="profile-dropdown" *ngIf="isShowProfile">
+  <p><span>Hello Otisasd</span></p>
+  <p><span>Account Setting</span></p>
+  <p><span>My Profile</span></p>
+  <p><span>FAQ</span></p>
+  <p (click)="logOut()"><span>Log Out</span></p>
+</div>
 <div class="notice">
   <div class="notice-right">
     <span>API</span>
@@ -61,33 +115,53 @@
     <p>Spendable: <span>$0.0000</span></p>
   </div>
 </div>
-<input type="checkbox" id="showMenu">
+<input type="checkbox" id="showMenu" />
 <div class="responsive-menu">
   <div>
     <div class="profile">
       <div class="profile-infor">
-        <img src="https://sproutgigs.com/assets/images/profile_no_image.gif" alt="">
+        <img
+          src="https://sproutgigs.com/assets/images/profile_no_image.gif"
+          alt=""
+        />
         <span>hello, thaohd</span>
       </div>
       <label for="showMenu"><i class="fa-solid fa-xmark"></i></label>
     </div>
     <div class="switch-role res-role">
-      <input type="checkbox" id="resswitch" /><label for="resswitch" id="resswitch-label" (click)="onSwitch()"></label>
+      <input
+        type="checkbox"
+        id="resswitch"
+        [checked]="isSwitch"
+        (click)="onSwitch()"
+      />
+      <label for="resswitch" id="resswitch-label"></label>
       <span>Switch Role</span>
     </div>
     <ul class="res-menu">
-      <li class="res-item"><span class="res-item__link" style="cursor:pointer;">My Tasks <i class="fa-solid fa-sort-down"></i></span></li>
+      <li class="res-item">
+        <span class="res-item__link" style="cursor: pointer"
+          >My Tasks <i class="fa-solid fa-sort-down"></i
+        ></span>
+      </li>
       <li class="res-item"><span class="res-item__link">Wallet</span></li>
-      <li class="res-item"><span class="res-item__link">Acount Setting</span></li>
-      <li class="res-item"><span class="res-item__link">Workes Ranking</span></li>
-      <li class="res-item"><span class="res-item__link">Support Tickets</span></li>
+      <li class="res-item">
+        <span class="res-item__link">Acount Setting</span>
+      </li>
+      <li class="res-item">
+        <span class="res-item__link">Workes Ranking</span>
+      </li>
+      <li class="res-item">
+        <span class="res-item__link">Support Tickets</span>
+      </li>
       <li class="res-item"><span class="res-item__link">Notification</span></li>
       <li class="res-item"><span class="res-item__link">Logs</span></li>
       <li class="res-item"><span class="res-item__link">FAQs</span></li>
       <li class="res-item"><span class="res-item__link">Share & Earn</span></li>
-      <li class="res-item"><span class="res-item__link">Logout</span></li>
+      <li class="res-item">
+        <span class="res-item__link" (click)="logOut()">Logout</span>
+      </li>
     </ul>
   </div>
   <button class="res-btn btn-find">FIND JOBS</button>
 </div>
-

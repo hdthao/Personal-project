@@ -12,20 +12,24 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   form: FormGroup;
   isValid = false;
+
   constructor(
     private router: Router,
     private userService: UserSevices,
     private fb: FormBuilder
   ) {}
+
   ngOnInit(): void {
     this.form = this.fb.group({
       email: ['', [Validators.required]],
       password: ['', [Validators.required]],
     });
   }
+
   get f() {
     return this.form.controls;
   }
+
   onSubmit() {
     this.isSubmitted = true;
     if (this.form.invalid) {
@@ -35,11 +39,15 @@ export class LoginComponent implements OnInit {
       this.onLogin();
     }
   }
+
   onLogin() {
     this.userService.getUser(this.form.value).subscribe(
-      (data: any) => {
-        localStorage.setItem('userToken', data.data.token);
-        this.router.navigate(['/details']);
+      (datas: any) => {
+        localStorage.setItem('userToken', datas.data.token);
+        this.userService.getUserInfor().subscribe((data: any) => {
+          localStorage.setItem('userRole', data.data.role);
+          this.router.navigate(['/detail-job']);
+        });
       },
       (error) => {
         console.log(error);
@@ -47,9 +55,11 @@ export class LoginComponent implements OnInit {
       }
     );
   }
+
   onSignUp() {
     this.router.navigate(['/signUp']);
   }
+
   onForgotPw() {
     this.router.navigate(['/forgotPw']);
   }

@@ -12,6 +12,7 @@ export class ForgotPwComponent implements OnInit {
 
   ngOnInit(): void {
   }
+
   backToLogin() {
     this.router.navigate(['/login']);
   }

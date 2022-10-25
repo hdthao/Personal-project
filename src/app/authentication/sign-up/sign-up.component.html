@@ -7,23 +7,37 @@
         <div class="form-group">
           <div class="group-realname child-group">
             <label for="realName">Real name (for internal verific. only)</label>
-            <input type="text" id="realName" placeholder="Type your response here"
-            formControlName = "fullName"
-            >
+            <input
+              type="text"
+              id="realName"
+              placeholder="Type your response here"
+              formControlName="fullName"
+            />
             <ng-container *ngIf="f['fullName'].touched || isSubmitted">
-              <span *ngIf="f['fullName'].errors?.['pattern']">Invalid Name</span>
-              <span *ngIf="f['fullName'].errors?.['required']">Name is required</span>
+              <span *ngIf="f['fullName'].errors?.['pattern']"
+                >Invalid Name</span
+              >
+              <span *ngIf="f['fullName'].errors?.['required']"
+                >Name is required</span
+              >
             </ng-container>
           </div>
 
           <div class="group-email child-group">
             <label for="email">Email</label>
-            <input type="text" id="email" placeholder="Type your response here"
-            formControlName = "email"
-            >
+            <input
+              type="text"
+              id="email"
+              placeholder="Type your response here"
+              formControlName="email"
+            />
             <ng-container *ngIf="f['email'].touched || isSubmitted">
-              <span *ngIf="f['email'].errors?.['required']">Email required</span>
-              <span *ngIf="f['email'].errors?.['emailInvalid'] && !f['email'].errors?.['required']">
+              <span *ngIf="f['email'].errors?.['required']"
+                >Email required</span
+              >
+              <span
+                *ngIf="f['email'].errors?.['emailInvalid'] && !f['email'].errors?.['required']"
+              >
                 Email is invalid
               </span>
               <span *ngIf="existEmail">Email record has exist</span>
@@ -33,34 +47,46 @@
         <div class="form-group">
           <div class="group-password child-group">
             <label for="pass">Password</label>
-            <input type="password" id="pass" placeholder="Type your response here"
-            formControlName = "password"
-            >
+            <input
+              type="password"
+              id="pass"
+              placeholder="Type your response here"
+              formControlName="password"
+            />
             <ng-container *ngIf="f['password'].touched || isSubmitted">
               <span *ngIf="f['password'].errors?.['required']">
                 Password is required
               </span>
-              <span *ngIf="f['password'].errors?.['passIsInvalid']
-                && !f['password'].errors?.['required']">
+              <span
+                *ngIf="f['password'].errors?.['passIsInvalid']
+                && !f['password'].errors?.['required']"
+              >
                 Password is invalid
               </span>
             </ng-container>
           </div>
           <div class="group-cfpass child-group">
             <label for="cfPass">Confirm Password</label>
-            <input type="password" id="cfPass" placeholder="Type your response here"
-            formControlName = "cfPass"
-            >
+            <input
+              type="password"
+              id="cfPass"
+              placeholder="Type your response here"
+              formControlName="cfPass"
+            />
             <ng-container *ngIf="f['cfPass'].touched || isSubmitted">
               <span *ngIf="f['cfPass'].errors?.['required']">
                 Confirm Password is required
               </span>
-              <span *ngIf="f['cfPass'].errors?.['passIsInvalid']
-                && !f['cfPass'].errors?.['required']">
+              <span
+                *ngIf="f['cfPass'].errors?.['passIsInvalid']
+                && !f['cfPass'].errors?.['required']"
+              >
                 Confirm Password is invalid
               </span>
-              <span *ngIf="f['cfPass'].errors?.['MustMatch']
-                && !f['password'].errors?.['passIsInvalid']">
+              <span
+                *ngIf="f['cfPass'].errors?.['MustMatch']
+                && !f['password'].errors?.['passIsInvalid']"
+              >
                 Password is not match
               </span>
             </ng-container>
@@ -69,9 +95,12 @@
         <div class="form-group">
           <div class="group-nickname child-group">
             <label for="nickName">Nickname</label>
-            <input type="text" id="nickName" placeholder="Type your response here"
-            formControlName = "username"
-            >
+            <input
+              type="text"
+              id="nickName"
+              placeholder="Type your response here"
+              formControlName="username"
+            />
             <ng-container *ngIf="f['username'].touched || isSubmitted">
               <span *ngIf="f['username'].errors?.['pattern']">
                 Invalid Nickname
@@ -81,61 +110,93 @@
               </span>
             </ng-container>
           </div>
-          <div class="group-country child-group" clickOutside (clickOutside)="isShowDropdown = true">
+          <div
+            class="group-country child-group"
+            clickOutside
+            (clickOutside)="isShowDropdown = true"
+          >
             <label for="country">Select Country</label>
-            <p (click)="isShowDropdown = false">{{country}}</p>
+            <p (click)="isShowDropdown = false" tabindex="0">
+              {{ country }} <i class="fa-solid fa-caret-down"></i>
+            </p>
             <div class="searchbar" [class.display]="isShowDropdown">
-                <div class="bar" >
-                    <input type="text" formControlName = "search"
-                      placeholder="Search Country"
-                    />
-                </div>
-                <ul>
-                  <ng-container *ngFor="let item of seriesList">
-                    <li *ngIf="f['search'].value === '' ||
-                    item.toLowerCase().includes(f['search'].value)">
-                      <input type="radio" value="{{item}}"
-                      id="{{item}}" name="region"
-                      formControlName = "region"
-                      >
-                      <label for="{{item}}" (click)="getListCountry(item)">
-                        {{item}}
-                      </label>
-                    </li>
-                  </ng-container>
-                </ul>
+              <div class="bar">
+                <input
+                  type="text"
+                  formControlName="search"
+                  placeholder="Search Country"
+                />
               </div>
+              <ul id="style-2">
+                <ng-container *ngFor="let item of seriesList">
+                  <li
+                    *ngIf="
+                      f['search'].value === '' ||
+                      item.toLowerCase().includes(f['search'].value)
+                    "
+                  >
+                    <input
+                      type="radio"
+                      value="{{ item }}"
+                      id="{{ item }}"
+                      name="region"
+                      formControlName="region"
+                    />
+                    <label for="{{ item }}" (click)="getListCountry(item)">
+                      {{ item }}
+                    </label>
+                  </li>
+                </ng-container>
+              </ul>
+            </div>
             <ng-container *ngIf="isSubmitted">
-              <span *ngIf="f['region'].errors?.['required']">Province is required</span>
-          </ng-container>
+              <span *ngIf="f['region'].errors?.['required']"
+                >Province is required</span
+              >
+            </ng-container>
           </div>
         </div>
         <div class="form-group group-roles">
           <div class="group-text">
-            <p>Select your profile type: </p>
+            <p>Select your profile type:</p>
             <span>
-              Select the desired profile type now, but you can switch between them later
+              Select the desired profile type now, but you can switch between
+              them later
             </span>
           </div>
           <div class="group-role">
             <div class="group-worker role">
-              <input type="radio" id="worker" name="role" formControlName = "role"
-                value="WORKER" required>
+              <input
+                type="radio"
+                id="worker"
+                name="role"
+                formControlName="role"
+                value="WORKER"
+                required
+              />
               <span></span>
               <label for="worker">I'm an Worker</label>
             </div>
             <div class="group-employer role">
-              <input type="radio" id="employer" name="role" formControlName = "role"
-                value="EMPLOYER" required>
+              <input
+                type="radio"
+                id="employer"
+                name="role"
+                formControlName="role"
+                value="EMPLOYER"
+                required
+              />
               <span></span>
               <label for="employer">I'm an Employer</label>
             </div>
-            <span *ngIf="f['role'].errors && isSubmitted">Please choose the role</span>
+            <span *ngIf="f['role'].errors && isSubmitted"
+              >Please choose the role</span
+            >
           </div>
         </div>
         <div class="form-group group-checks">
           <div class="group-check">
-            <input type="checkbox" id="privacy" formControlName = "acceptTerms">
+            <input type="checkbox" id="privacy" formControlName="acceptTerms" />
             <span></span>
             <label for="privacy">
               I agree to SproutGigs Terms of Service and Privacy Policy.
@@ -145,17 +206,23 @@
             Please acceptTerms
           </span>
           <div class="group-check">
-            <input type="checkbox" id="sendInfo">
+            <input type="checkbox" id="sendInfo" />
             <span></span>
-            <label for="sendInfo">Send me news, events and offers via periodic email.</label>
+            <label for="sendInfo"
+              >Send me news, events and offers via periodic email.</label
+            >
           </div>
         </div>
       </div>
       <div class="form-footer">
         <button class="form-footer__btn">SIGN UP</button>
-        <p class="form-footer__text">Have an account?
-          <span class="createAccount link" style="cursor: pointer; text-decoration: underline;"
-            (click)="onLogin()">
+        <p class="form-footer__text">
+          Have an account?
+          <span
+            class="createAccount link"
+            style="cursor: pointer; text-decoration: underline"
+            (click)="onLogin()"
+          >
             Login now
           </span>
         </p>

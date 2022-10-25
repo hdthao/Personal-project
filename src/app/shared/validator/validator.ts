@@ -1,21 +1,22 @@
 import { AbstractControl, FormGroup } from '@angular/forms';
-import { ApiService } from 'src/app/core/services/api.service';
-import { map, switchMap, timer } from 'rxjs';
 import { UserSevices } from 'src/app/core/model-user/user.service';
 
 export function checkEmail(c: AbstractControl) {
   const rexEmail = /^[a-z][a-z0-9_\.]{5,32}@[a-z0-9]{2,}(\.[a-z0-9]{2,4}){1,2}$/;
   return rexEmail.test(c.value) ? null : { emailInvalid: true };
 }
+
 export function checkPass(control: AbstractControl) {
   const rexPass = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#$%^&*]).{8,20}$/;
   let rs = rexPass.test(control.value);
   return rs ? null : { passIsInvalid: true };
 }
+
 export function comparePass(control: AbstractControl) {
   const v = control.value;
   return v.password === v.cfPass ? null : { passIsNotMatch: true };
 }
+
 export function MustMatch(controlName: string, matchingControlName: string) {
   return (formGroup: FormGroup) => {
       const control = formGroup.controls[controlName];
@@ -30,6 +31,7 @@ export function MustMatch(controlName: string, matchingControlName: string) {
       }
   }
 }
+
 export function duplicate( api: UserSevices) {
     return (control: AbstractControl) => {
       return api.getUser(control).subscribe((data) => {
