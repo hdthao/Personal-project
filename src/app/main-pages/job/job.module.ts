@@ -8,6 +8,7 @@ import { PostStep1Component } from './post-job/post-step1/post-step1.component';
 import { PostStep2Component } from './post-job/post-step2/post-step2.component';
 import { JobRoutingModule } from './job.routing.module';
 import { NgxSliderModule } from '@angular-slider/ngx-slider';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { NgxSliderModule } from '@angular-slider/ngx-slider';
   ],
   imports: [
     CommonModule,
+    FormsModule,
     sharedModule,
     JobRoutingModule,
     NgxSliderModule

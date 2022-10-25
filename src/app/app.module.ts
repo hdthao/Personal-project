@@ -6,6 +6,7 @@ import { MainPagesComponent } from './main-pages/main-pages.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { sharedModule } from './shared/shared.module';
+import { InterceptorInterceptor } from './core/interceptor/interceptor.interceptor';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { sharedModule } from './shared/shared.module';
     HttpClientModule,
     sharedModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true,
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -91,10 +91,10 @@
 .job-infor__rate {
 	.price {
 		display: flex;
-		align-items: center;
 		& span {
 			font-weight: 300;
 			color: var(--primary-text);
+			transform: translateY(1px);
 		}
 	}
 	p {

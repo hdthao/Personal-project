@@ -10,7 +10,7 @@ const routes: Routes = [
     path: 'post',
     children: [
       { path: '', pathMatch: 'full', component: PostStep1Component },
-      { path: 'step2', component: PostStep2Component },
+      // { path: 'step2', component: PostStep2Component },
     ],
   },
 ];

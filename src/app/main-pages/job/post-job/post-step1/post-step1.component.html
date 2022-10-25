@@ -5,93 +5,84 @@
     <li class="job-item"><a href="">Classic Job</a><i class="fa-solid fa-circle-info"></i></li>
     <li class="job-item"><a href="">List Job</a><i class="fa-solid fa-circle-info"></i></li>
   </ul>
-  <div class="region">
-    <div class="select-region">
+  <div class="main">
+    <!-- step1 -->
+    <div class="select-region" *ngIf="!swtichStep">
       <span>Choose targeting zone</span>
       <div class="list-region">
-        <div class="item-region">
-          <input type="radio" id="international" name="region">
-          <label for="international">international</label>
-        </div>
-        <div class="item-region">
-          <input type="radio" id="asia" name="region">
-          <label for="asia">Asia</label>
-        </div>
-        <div class="item-region">
-          <input type="radio" id="usa" name="region">
-          <label for="usa">USA & Western</label>
-        </div>
-        <div class="item-region">
-          <input type="radio" id="africa" name="region">
-          <label for="africa">Africa</label>
-        </div>
-        <div class="item-region">
-          <input type="radio" id="eu" name="region">
-          <label for="eu">Europe West</label>
+        <div class="item-region" *ngFor="let item of dataListTargetZone" (click) = "getTargetZoneFromApi()">
+          <ng-container >
+            <input type="radio" id="{{item}}" name="region" value="{{item}}"/>
+            <label for="{{item}}" (click)="getTargetZone(item)">{{item}}</label>
+          </ng-container>
         </div>
       </div>
       <div class="zone">
         <span>Select ALL countries you want to EXCLUDE from the selected zone (optional)</span>
         <div class="list-zone">
-          <div class="item-zone">
-            <input type="checkbox" id="alb">
-            <label for="alb">Albinia</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="alg">
-            <label for="alg">Algeria</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="aus">
-            <label for="aus">Australia</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="ban">
-            <label for="ban">Bangladesh</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="bra">
-            <label for="bra">Brazil</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="ca">
-            <label for="ca">Canada</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="china">
-            <label for="china">China</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="col">
-            <label for="col">Columbia</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="eg">
-            <label for="eg">Egypt</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="fin">
-            <label for="fin">Finland</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="fr">
-            <label for="fr">France</label>
-          </div>
-          <div class="item-zone">
-            <input type="checkbox" id="ge">
-            <label for="ge">Germany</label>
-          </div>
+          <ng-container *ngIf="jobData">
+            <ng-container  *ngFor="let item of jobData.data; let i = index">
+              <div class="item-zone" (click)="getIndex(i)"
+              *ngIf="item.targetZone[0] === listTargetZone">
+                <input type="checkbox" id="{{item.name}}"
+                  value="{{item.name}}"
+                  name="{{item.name}}"
+                  [(ngModel)]="jobData[i]"
+                  (ngModelChange)="getCtry($event)"
+                >
+                <label for="{{item.name}}">{{item.name}}</label>
+              </div>
+            </ng-container>
+          </ng-container>
         </div>
-        <div class="next-btn" (click)="nextStep()"><button>Apply and go to next</button></div>
+        <div class="next-btn" (click)="swtichStep = true">
+          <button>Apply and go to next</button>
+        </div>
       </div>
     </div>
-    <div class="show-region">
-      <app-show-result></app-show-result>
+    <!-- step2 -->
+    <div class="select-category" *ngIf="swtichStep">
+      <span>Choose the job category</span>
+      <div class="list-category">
+        <ng-container *ngIf="listCategory">
+          <div class="item-category" *ngFor="let item of listCategory.data"
+          (click) = "getCategoryName(item.name)">
+            <input type="radio" id="{{item.name}}" name="category">
+            <label for="{{item.name}}">{{item.name}}</label>
+          </div>
+        </ng-container>
+      </div>
+      <div class="subcategory">
+        <span>Choose the subcategory</span>
+        <ng-container *ngIf="listCategory">
+          <div class="list-subcategory" >
+            <ng-container *ngFor="let item of listCategory.data">
+              <ng-container *ngIf="item.name === categoryName ">
+                <div class="item-subcategory" *ngFor="let i of item.children"
+                (click) = "getSubCategoryName(i.name)">
+                  <ng-container >
+                  <input type="radio" id="{{i.name}}" name="subcategory">
+                  <label for="{{i.name}}">{{i.name}}</label>
+                  </ng-container>
+                </div>
+            </ng-container>
+            </ng-container>
+          </div>
+        </ng-container>
+        <div class="next-btn"><button>POST JOB</button></div>
+      </div>
+    </div>
+    <div class="show-result">
+      <app-show-result [listCountry] = "listCountry"
+        [listTargetZone] = "listTargetZone"
+        [category]= "categoryName"
+        [subCategory]= "subCategoryName"
+        >
+      </app-show-result>
     </div>
   </div>
   <div>
-    <app-step></app-step>
+    <app-step [switchStep]="swtichStep" (changStep)="changeStep()"></app-step>
   </div>
 </div>
 <app-footer></app-footer>
-

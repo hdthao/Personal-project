@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input, Output,  EventEmitter } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,12 +7,14 @@ import { Router } from '@angular/router';
   styleUrls: ['./step.component.scss']
 })
 export class StepComponent implements OnInit {
-
+  @Input() switchStep = false;
+  @Output() changStep = new EventEmitter();
   constructor( private router: Router) { }
 
   ngOnInit(): void {
   }
-  onBack() {
-    this.router.navigate(['/post'])
+
+  back() {
+    this.changStep.emit(this.switchStep);
   }
 }

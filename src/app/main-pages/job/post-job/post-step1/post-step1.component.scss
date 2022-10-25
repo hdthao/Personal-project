@@ -30,7 +30,7 @@
   }
 }
 
-.region {
+.main {
   display: flex;
   margin-top: 30px;
   gap: 40px;
@@ -69,7 +69,10 @@
   column-gap: 20px;
   row-gap: 10px;
   margin: 20px 0;
+}
 
+.list-region,
+.list-category {
   label {
     background: #ffff;
     display: block;
@@ -128,12 +131,84 @@
   }
 }
 
-.next-btn {
-  text-align: center;
+.show-result {
+  width: 35%;
 }
 
-.show-region {
-  width: 35%;
+.category {
+  display: flex;
+  margin-top: 30px;
+  gap: 40px;
+}
+
+.select-category {
+  width: 65%;
+
+  span {
+    font-weight: 500;
+    color: var(--second-text);
+  }
+}
+
+.list-category {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  column-gap: 20px;
+  row-gap: 10px;
+  margin: 20px 0;
+
+}
+
+.list-subcategory {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  row-gap: 10px;
+  column-gap: 5px;
+  margin-top: 20px;
+
+  input[type="radio"] {
+    display: none;
+
+    &:checked+label {
+      color: var(--primary-color);
+      box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+      font-weight: 600;
+      background: var(--bg-input);
+      transition: 0.2s ease-in-out;
+    }
+  }
+}
+
+.item-subcategory {
+  label {
+    background: #f2f3f5;
+    display: block;
+    width: 100%;
+    padding: 15px;
+    border: none;
+    text-align: center;
+    color: var(--primary-text);
+    font-size: 14px;
+    cursor: pointer;
+    font-weight: 300;
+  }
+}
+
+.subcategory {
+  button {
+    color: #ffff;
+    background: var(--primary-color);
+    padding: 10px 20px;
+    font-weight: 600;
+    text-transform: uppercase;
+    border: none;
+    margin-top: 30px;
+    cursor: pointer;
+  }
+}
+
+.next-btn {
+  text-align: center;
 }
 
 @media screen and (min-width: 1080px) {
@@ -156,15 +231,16 @@
     margin-top: 40px;
   }
 
-  .region {
+  .main {
     flex-direction: column;
   }
 
-  .select-region {
+  .select-region,
+  .select-category {
     width: 100%;
   }
 
-  .show-region {
+  .show-result {
     width: 100%;
   }
 }
@@ -175,19 +251,22 @@
     margin-top: 40px;
   }
 
-  .region {
+  .main {
     flex-direction: column;
   }
 
-  .select-region {
+  .select-region,
+  .select-category {
     width: 100%;
   }
 
-  .show-region {
+  .show-result {
     width: 100%;
   }
 
-  .list-region {
+  .list-region,
+  .list-subcategory,
+  .list-category {
     display: grid;
     grid-template-columns: 1fr;
     column-gap: 20px;

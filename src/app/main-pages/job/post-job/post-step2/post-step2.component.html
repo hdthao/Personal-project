@@ -9,47 +9,31 @@
     <div class="select-category">
       <span>Choose the job category</span>
       <div class="list-category">
-        <div class="item-category">
-          <input type="radio" id="international" name="category">
-          <label for="international">international</label>
-        </div>
-        <div class="item-category">
-          <input type="radio" id="asia" name="category">
-          <label for="asia">Asia</label>
-        </div>
-        <div class="item-category">
-          <input type="radio" id="usa" name="category">
-          <label for="usa">USA & Western</label>
-        </div>
-        <div class="item-category">
-          <input type="radio" id="africa" name="category">
-          <label for="africa">Africa</label>
-        </div>
-        <div class="item-category">
-          <input type="radio" id="eu" name="category">
-          <label for="eu">Europe West</label>
-        </div>
+        <ng-container *ngIf="listCategory">
+          <div class="item-category" *ngFor="let item of listCategory.data"
+          (click) = "getCategoryName(item.name)"
+          >
+            <input type="radio" id="{{item.name}}" name="category">
+            <label for="{{item.name}}">{{item.name}}</label>
+          </div>
+        </ng-container>
       </div>
       <div class="subcategory">
         <span>Choose the subcategory</span>
-        <div class="list-subcategory">
-          <div class="item-subcategory">
-            <input type="radio" id="email" name="subcategory">
-            <label for="email">Email submit only</label>
+        <ng-container *ngIf="listCategory">
+          <div class="list-subcategory" >
+            <ng-container *ngFor="let item of listCategory.data">
+              <ng-container *ngIf="item.name === categoryName ">
+                <div class="item-subcategory" *ngFor="let i of item.children">
+                  <ng-container >
+                  <input type="radio" id="{{i.name}}" name="subcategory">
+                  <label for="{{i.name}}">{{i.name}}</label>
+                  </ng-container>
+                </div>
+            </ng-container>
+            </ng-container>
           </div>
-          <div class="item-subcategory">
-            <input type="radio" id="sim" name="subcategory">
-            <label for="sim">Simple sign up</label>
-          </div>
-          <div class="item-subcategory">
-            <input type="radio" id="com" name="subcategory">
-            <label for="com">Complex Sign up</label>
-          </div>
-          <div class="item-subcategory">
-            <input type="radio" id="fb" name="subcategory">
-            <label for="fb">Facebook Like</label>
-          </div>
-        </div>
+        </ng-container>
         <div class="next-btn"><button>Apply and go to next</button></div>
       </div>
     </div>
@@ -57,6 +41,7 @@
       <app-show-result></app-show-result>
     </div>
   </div>
+
   <div>
     <app-step></app-step>
   </div>

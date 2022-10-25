@@ -6,6 +6,7 @@
 /out-tsc
 /bazel-out
 /_redirects
+/post-step2
 
 # Node
 /node_modules

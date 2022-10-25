@@ -73,19 +73,39 @@
             formControlName = "username"
             >
             <ng-container *ngIf="f['username'].touched || isSubmitted">
-              <span *ngIf="f['username'].errors?.['pattern']">Invalid Nickname</span>
-              <span *ngIf="f['username'].errors?.['required']">Nickname is required</span>
+              <span *ngIf="f['username'].errors?.['pattern']">
+                Invalid Nickname
+              </span>
+              <span *ngIf="f['username'].errors?.['required']">
+                Nickname is required
+              </span>
             </ng-container>
           </div>
-          <div class="group-country child-group">
-            <label for="country">Select country</label>
-            <select name="" id="country" required formControlName = "region">
-              <option value="">Select Country</option>
-              <option value="VN">VN</option>
-              <option value="US">US</option>
-              <option value="Uk">UK</option>
-            </select>
-            <ng-container *ngIf="f['region'].touched || isSubmitted">
+          <div class="group-country child-group" clickOutside (clickOutside)="isShowDropdown = true">
+            <label for="country">Select Country</label>
+            <p (click)="isShowDropdown = false">{{country}}</p>
+            <div class="searchbar" [class.display]="isShowDropdown">
+                <div class="bar" >
+                    <input type="text" formControlName = "search"
+                      placeholder="Search Country"
+                    />
+                </div>
+                <ul>
+                  <ng-container *ngFor="let item of seriesList">
+                    <li *ngIf="f['search'].value === '' ||
+                    item.toLowerCase().includes(f['search'].value)">
+                      <input type="radio" value="{{item}}"
+                      id="{{item}}" name="region"
+                      formControlName = "region"
+                      >
+                      <label for="{{item}}" (click)="getListCountry(item)">
+                        {{item}}
+                      </label>
+                    </li>
+                  </ng-container>
+                </ul>
+              </div>
+            <ng-container *ngIf="isSubmitted">
               <span *ngIf="f['region'].errors?.['required']">Province is required</span>
           </ng-container>
           </div>

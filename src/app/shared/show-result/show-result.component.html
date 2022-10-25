@@ -4,11 +4,11 @@
     <p class="result-region__title">SUMMARY</p>
     <p>Estimated Job costs: <span>$1.1850</span></p>
     <hr>
-    <p>Zone: <span>international</span></p>
-    <p>Exclude: </p>
+    <p>Zone: <span>{{listTargetZone}}</span></p>
+    <p>Exclude:<span *ngFor="let item of listCountry">{{ item }}, </span></p>
     <hr>
-    <p>Category: <span>Facebook Micro-influencer</span></p>
-    <p>Subcategory: Facebook Like</p>
+    <p>Category: <span>{{category}}</span></p>
+    <p>Subcategory: <span>{{subCategory}}</span></p>
     <hr>
     <p>Level: <span>stater</span></p>
     <p>Speed: <span>1000</span></p>
@@ -25,5 +25,5 @@
     <p>Additional Notes: <span>aaaaa</span></p>
     <p>Proofs required: <span>hello</span></p>
   </div>
-  <button class="btn-clear">CLEAR ALL</button>
+  <button class="btn-clear" (click)="clear()">CLEAR ALL</button>
 </div>
