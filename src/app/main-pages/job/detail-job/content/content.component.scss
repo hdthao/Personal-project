@@ -20,6 +20,7 @@
 .job-header {
   display: flex;
   justify-content: space-between;
+
 }
 
 .job-icon {
@@ -38,7 +39,7 @@
   font-weight: 500;
   cursor: pointer;
   font-size: 15px;
-
+	margin-right: 10px;
   span {
     font-size: 10px;
     font-weight: 500;
@@ -164,16 +165,26 @@
   }
 }
 
-@media screen and (min-width: 768px) and (max-width: 1079px) {
+@media screen and (min-width: 787px) and (max-width: 1079px) {
   .container {
     padding: 0 2%;
     margin: 20px 0;
   }
+  .job-infor__icon {
+    display: none;
+  }
 }
 
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 786px) {
   .container {
     padding: 0 2%;
     margin: 20px 0;
+  }
+  .job-infor {
+    justify-content: center;
+    column-gap: 20px;
+  }
+  .job-infor__icon {
+    display: none;
   }
 }

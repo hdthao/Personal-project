@@ -1,3 +1,6 @@
+<div class="loading" *ngIf="showLoading">
+  <app-loading [showLoading] = "showLoading"></app-loading>
+</div>
 <div class="authentication">
   <app-header></app-header>
   <div class="showErrors" *ngIf="isValid">

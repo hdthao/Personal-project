@@ -76,8 +76,9 @@
   label {
     background: #ffff;
     display: block;
-    width: 100%;
     padding: 15px;
+    overflow: hidden;
+    white-space: nowrap;
     border: 1px solid #d3dae6;
     text-align: center;
     color: var(--primary-text);
@@ -152,11 +153,10 @@
 
 .list-category {
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
   column-gap: 20px;
   row-gap: 10px;
   margin: 20px 0;
-
 }
 
 .list-subcategory {

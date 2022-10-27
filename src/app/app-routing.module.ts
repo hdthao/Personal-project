@@ -12,9 +12,7 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () =>
-      import('./main-pages/job/job.module').then(
-        (m) => m.JobModule
-      ),
+      import('./main-pages/job/job.module').then((m) => m.JobModule),
   },
 ];
 @NgModule({

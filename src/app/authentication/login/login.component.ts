@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { GuardService } from 'src/app/core/guard/gurad.service';
 import { UserSevices } from 'src/app/core/model-user/user.service';
+import { Auhentication } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -12,11 +14,13 @@ export class LoginComponent implements OnInit {
   isSubmitted = false;
   form: FormGroup;
   isValid = false;
+  showLoading = false;
 
   constructor(
     private router: Router,
     private userService: UserSevices,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private auth: Auhentication
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +50,13 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userToken', datas.data.token);
         this.userService.getUserInfor().subscribe((data: any) => {
           localStorage.setItem('userRole', data.data.role);
-          this.router.navigate(['/detail-job']);
+          if (localStorage.getItem('userToken') !== null) {
+            this.auth.login();
+          }
+          this.showLoading = true;
+          setTimeout(() => {
+            this.router.navigate(['/detail-job']);
+          }, 1000);
         });
       },
       (error) => {

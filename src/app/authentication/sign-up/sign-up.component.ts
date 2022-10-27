@@ -16,6 +16,7 @@ export class SignUpComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
   existEmail = false;
+  showLoading = false;
   seriesList: any[] = [
     'Viet Nam',
     'Thai Land',
@@ -75,6 +76,7 @@ export class SignUpComponent implements OnInit {
   }
 
   postUser() {
+    this.showLoading = true;
     this.userService.postUser(this.form.value).subscribe(
       (data) => {
         this.router.navigate(['/login']);

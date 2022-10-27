@@ -14,6 +14,7 @@ export class PostStepComponent implements OnInit {
   listTargetZone: string = '';
   index: any;
   isSwitch = true;
+  showLoading = false;
   dataListTargetZone = [
     'Asia',
     'International',
@@ -122,9 +123,10 @@ export class PostStepComponent implements OnInit {
       pauseAfterApproval: true,
       estimatedJobCosts: 10,
     };
-
+    this.showLoading = true
     this.jobService.postJob(jobDataToPost).subscribe((data) => {
       console.log(data);
+
       this.router.navigate(['/detail-job']);
     });
   }

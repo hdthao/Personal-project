@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-show-result',
@@ -11,7 +12,7 @@ export class ShowResultComponent implements OnInit {
   @Input() category: string = '';
   @Input() subCategory: string = '';
 
-  constructor() {}
+  constructor( private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -20,5 +21,6 @@ export class ShowResultComponent implements OnInit {
     this.listTargetZone = '';
     this.category = '';
     this.subCategory = '';
+    window.location.reload();
   }
 }

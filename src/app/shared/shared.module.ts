@@ -5,6 +5,7 @@ import { StepComponent } from './step/step.component';
 import { ShowResultComponent } from './show-result/show-result.component';
 import { ClickOutsideDirective } from './directive/click-outside.directive';
 import { FooterComponent } from '../layout/footer/footer.component';
+import { LoadingComponent } from './loading/loading.component';
 
 @NgModule({
   declarations: [
@@ -13,6 +14,7 @@ import { FooterComponent } from '../layout/footer/footer.component';
     ShowResultComponent,
     ClickOutsideDirective,
     FooterComponent,
+    LoadingComponent,
   ],
   imports: [
     CommonModule
@@ -23,6 +25,7 @@ import { FooterComponent } from '../layout/footer/footer.component';
     ShowResultComponent,
     ClickOutsideDirective,
     FooterComponent,
+    LoadingComponent,
   ]
 })
 export class sharedModule { }

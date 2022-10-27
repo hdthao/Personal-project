@@ -24,14 +24,14 @@ export class SearchComponent implements OnInit {
   job = ['Starter', 'Advanced', 'Expert'];
   listSort = [
     {
-      name: 'Payment - ASC',
-      value: 'payment',
-      sortOrder: 'ASC',
-    },
-    {
       name: 'Payment - DESC',
       value: 'payment',
       sortOrder: 'DESC',
+    },
+    {
+      name: 'Payment - ASC',
+      value: 'payment',
+      sortOrder: 'ASC',
     },
     {
       name: 'Newest',
@@ -120,7 +120,6 @@ export class SearchComponent implements OnInit {
     };
     this.jobService.getJobList(data).subscribe((data: any) => {
       this.jobListData = data;
-      console.log(data);
     });
   }
 

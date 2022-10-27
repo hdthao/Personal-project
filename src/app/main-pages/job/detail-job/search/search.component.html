@@ -165,16 +165,18 @@
       {{ jobListData.data.data.length }} results
     </p>
     <div class="search-result">
-      <input type="text" placeholder="Search job and press enter" />
-      <label for="sort"><span>Sort by/</span></label>
-      <div class="dropdown" (clickOutside)="clickOutside($event)">
-        <label for="" (click)="toggle()" style="cursor: pointer"
-          ><span>{{ sortBy }}<i class="fa-solid fa-sort-down"></i></span
-        ></label>
-        <div class="dropdown-list" *ngIf="isToggle">
-          <ng-container *ngFor="let item of listSort">
-            <span (click)="selectSort(item)">{{ item.name }}</span>
-          </ng-container>
+      <input type="text" placeholder="Search job and press enter..." />
+      <div class="sort-by">
+        <label for="sort"><span>Sort by/</span></label>
+        <div class="dropdown" (clickOutside)="clickOutside($event)">
+          <label for="" (click)="toggle()" style="cursor: pointer"
+            ><span>{{ sortBy }}<i class="fa-solid fa-sort-down"></i></span
+          ></label>
+          <div class="dropdown-list" *ngIf="isToggle">
+            <ng-container *ngFor="let item of listSort">
+              <span (click)="selectSort(item)">{{ item.name }}</span>
+            </ng-container>
+          </div>
         </div>
       </div>
     </div>
