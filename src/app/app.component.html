@@ -1,2 +1,8 @@
 <!-- <app-main-pages></app-main-pages> -->
 <app-main-pages></app-main-pages>
+<div class="contain" *ngIf="loading | async">
+  <div class="lds-ripple">
+    <div></div>
+    <div></div>
+  </div>
+</div>

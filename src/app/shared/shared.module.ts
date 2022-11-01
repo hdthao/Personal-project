@@ -6,6 +6,8 @@ import { ShowResultComponent } from './show-result/show-result.component';
 import { ClickOutsideDirective } from './directive/click-outside.directive';
 import { FooterComponent } from '../layout/footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
+import { Filter } from './pipe/filter.pipe';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 @NgModule({
   declarations: [
@@ -15,10 +17,9 @@ import { LoadingComponent } from './loading/loading.component';
     ClickOutsideDirective,
     FooterComponent,
     LoadingComponent,
+    Filter,
   ],
-  imports: [
-    CommonModule
-  ],
+  imports: [CommonModule, NgxPaginationModule],
   exports: [
     DetailHeaderComponent,
     StepComponent,
@@ -26,6 +27,8 @@ import { LoadingComponent } from './loading/loading.component';
     ClickOutsideDirective,
     FooterComponent,
     LoadingComponent,
-  ]
+    Filter,
+    NgxPaginationModule
+  ],
 })
-export class sharedModule { }
+export class sharedModule {}

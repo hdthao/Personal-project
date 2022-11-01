@@ -6,7 +6,7 @@ import { PostStepComponent } from './post-job/post-step/post-step.component';
 
 const routes: Routes = [
   {
-    path: 'detail-job',
+    path: 'list-job',
     component: DetailsComponent,
     canActivate: [GuardService],
   },

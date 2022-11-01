@@ -158,6 +158,13 @@
   }
 }
 
+pagination-controls {
+  text-align: center;
+}
+.ngx-pagination li {
+  background: var(--primary-color) !important;
+}
+
 @media screen and (min-width: 1080px) {
   .container {
     padding: 0 calc((100% - 1080px) / 2);

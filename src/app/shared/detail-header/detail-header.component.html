@@ -55,7 +55,8 @@
           [checked]="isSwitch"
         />
         <label for="switch" id="switch-label" class="switch-label"> </label>
-        <span>Switch Role</span>
+        <span *ngIf="isSwitch; else notisSwitch" style="min-width: 60px;">Employer</span>
+        <ng-template #notisSwitch> <span style="min-width: 60px;">Worker</span></ng-template>
       </div>
       <div class="notification">
         <div class="noti-viewlog feature">
@@ -136,7 +137,8 @@
         (click)="onSwitch()"
       />
       <label for="resswitch" id="resswitch-label"></label>
-      <span>Switch Role</span>
+      <span *ngIf="isSwitch; else notisSwitch" style="min-width: 60px;">Employer</span>
+      <ng-template #notisSwitch> <span style="min-width: 60px;">Worker</span></ng-template>
     </div>
     <ul class="res-menu">
       <li class="res-item">

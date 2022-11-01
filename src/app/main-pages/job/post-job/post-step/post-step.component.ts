@@ -127,7 +127,7 @@ export class PostStepComponent implements OnInit {
     this.jobService.postJob(jobDataToPost).subscribe((data) => {
       console.log(data);
 
-      this.router.navigate(['/detail-job']);
+      this.router.navigate(['/list-job']);
     });
   }
 }

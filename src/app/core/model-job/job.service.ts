@@ -1,14 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
 })
 export class JobService {
-  constructor(private http: HttpClient) {}
   private apiUrl = environment.apiUrl;
-
+  constructor(private http: HttpClient) {}
+  jobListData = new BehaviorSubject([]);
+  sharedData = this.jobListData.asObservable();
   getCountry() {
     return this.http.get(`${this.apiUrl}/api/countries`);
   }
@@ -23,5 +25,9 @@ export class JobService {
 
   getJobList(data: any) {
     return this.http.post(`${this.apiUrl}/api/jobs/list`, data);
+  }
+
+  updateData(data: any) {
+    this.jobListData.next(data);
   }
 }

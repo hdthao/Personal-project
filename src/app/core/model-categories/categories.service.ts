@@ -13,7 +13,5 @@ export class CategoriesService {
   getCategory() {
     return this.http.get(`${this.apiUrl}/api/categories`);
   }
-  // getTargetZone(data:any) {
-  //   return this.http.get(`${this.apiUrl}/api/countries?target_zone=${data} `);
-  // }
+
 }

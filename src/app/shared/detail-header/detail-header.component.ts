@@ -49,7 +49,7 @@ export class DetailHeaderComponent implements OnInit {
         localStorage.setItem('userRole', 'WORKER');
         this.role = localStorage.getItem('userRole');
         setTimeout(() => {
-          this.router.navigate(['/detail-job']);
+          this.router.navigate(['/list-job']);
         }, 1500);
       }
     });
@@ -60,7 +60,7 @@ export class DetailHeaderComponent implements OnInit {
   }
 
   gotoFind() {
-    this.router.navigate(['/detail-job']);
+    this.router.navigate(['/list-job']);
   }
 
   getRole() {

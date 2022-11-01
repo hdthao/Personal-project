@@ -50,15 +50,24 @@
       <input type="checkbox" id="category" *ngIf="showCategory" />
       <div class="select-category shared">
         <ul class="category-content content">
-          <li *ngFor="let item of category" class="list-category list">
-            <input type="radio" id="{{ item }}" name="category" />
-            <span class="radio"></span>
-            <label for="{{ item }}">{{ item }}</label>
-          </li>
+          <ng-container *ngIf="category">
+            <li *ngFor="let item of category.data" class="list-category list">
+              <input
+                type="radio"
+                id="{{ item.name }}"
+                name="category"
+                (click)="getValue(item.name)"
+              />
+              <span class="radio"></span>
+              <label for="{{ item.name }}">{{ item.name }}</label>
+            </li>
+          </ng-container>
         </ul>
         <div class="select-btn">
-          <button class="select-btn__clear">CLEAR</button>
-          <button class="select-btn__apply">APPLY</button>
+          <button class="select-btn__clear" (click)="clear()">CLEAR</button>
+          <button class="select-btn__apply" (click)="applyToSearch()">
+            APPLY
+          </button>
         </div>
       </div>
     </div>
@@ -162,10 +171,10 @@
   </div>
   <div class="result">
     <p class="show-result" *ngIf="jobListData">
-      {{ jobListData.data.data.length }} results
+       Results
     </p>
     <div class="search-result">
-      <input type="text" placeholder="Search job and press enter..." />
+      <input type="text" placeholder="Search job and press enter..." [(ngModel)]="valueToSearch" />
       <div class="sort-by">
         <label for="sort"><span>Sort by/</span></label>
         <div class="dropdown" (clickOutside)="clickOutside($event)">
@@ -182,4 +191,7 @@
     </div>
   </div>
 </div>
-<app-content [jobListData]="jobListData"></app-content>
+<app-content
+  [dataToSearch]="sharedDataToSearch"
+  [valueToSearch]="valueToSearch"
+></app-content>

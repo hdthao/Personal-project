@@ -10,5 +10,6 @@ export class Auhentication {
   login() {
     this.isLogin = true;
   }
+  isLogout = false;
 
 }

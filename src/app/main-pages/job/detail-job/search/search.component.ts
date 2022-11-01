@@ -1,5 +1,7 @@
 import { LabelType, Options } from '@angular-slider/ngx-slider';
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { data } from 'jquery';
+import { CategoriesService } from 'src/app/core/model-categories/categories.service';
 import { JobService } from 'src/app/core/model-job/job.service';
 
 @Component({
@@ -18,6 +20,9 @@ export class SearchComponent implements OnInit {
   showPrice = true;
   jobListData: any;
   jobListDataSort: any;
+  dataCategoryToSearch: string;
+  sharedDataToSearch: string;
+  valueToSearch:string;
   sortBy = 'Payment - DESC';
   valueSort = '';
   sortOrder = '';
@@ -44,16 +49,7 @@ export class SearchComponent implements OnInit {
       sortOrder: 'DESC',
     },
   ];
-  category = [
-    'Ad, Sales, Social Media Copy',
-    'Articel & Blog Posts',
-    'Beta Reading',
-    'Book Reading',
-    'Business Names & Slogans',
-    'Creative Writing (UX, Speechwriting, Technical, Advice)',
-    'Rsearch & Summaries',
-    'Rsume Writing',
-  ];
+  category:any;
   subCategory = [
     'Display Advertising',
     'Commerce Marketing',
@@ -83,10 +79,14 @@ export class SearchComponent implements OnInit {
     '% task rated satifed - hight to low',
   ];
 
-  constructor(private jobService: JobService) {}
+  constructor(
+    private jobService: JobService,
+    private categoryService: CategoriesService
+  ) {}
 
   ngOnInit(): void {
     this.getJobList();
+    this.getCategory()
   }
 
   toggle() {
@@ -119,8 +119,17 @@ export class SearchComponent implements OnInit {
       limit: null,
     };
     this.jobService.getJobList(data).subscribe((data: any) => {
-      this.jobListData = data;
+      this.jobService.updateData(data);
+      this.jobService.sharedData.subscribe(x => {
+        this.jobListData = x
+      })
     });
+  }
+
+  getCategory() {
+    this.categoryService.getCategory().subscribe((data) => {
+      this.category = data;
+    })
   }
 
   sortJoblist() {
@@ -130,9 +139,10 @@ export class SearchComponent implements OnInit {
       sortOrder: this.sortOrder,
     };
     this.jobService.getJobList(data).subscribe((data) => {
-      this.jobListDataSort = data;
-      this.jobListData = this.jobListDataSort;
-      console.log(this.jobListData);
+      this.jobService.updateData(data);
+      this.jobService.sharedData.subscribe(x => {
+        this.jobListData = x
+      })
     });
   }
 
@@ -142,5 +152,18 @@ export class SearchComponent implements OnInit {
     this.sortOrder = data.sortOrder;
     this.sortJoblist();
     this.isToggle = false;
+  }
+
+  getValue(data:any) {
+    this.dataCategoryToSearch = data;
+  }
+
+  applyToSearch() {
+    this.showCategory = false;
+    this.sharedDataToSearch = this.dataCategoryToSearch;
+  }
+
+  clear() {
+    window.location.reload();
   }
 }

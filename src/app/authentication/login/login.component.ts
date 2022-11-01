@@ -55,7 +55,7 @@ export class LoginComponent implements OnInit {
           }
           this.showLoading = true;
           setTimeout(() => {
-            this.router.navigate(['/detail-job']);
+            this.router.navigate(['/list-job']);
           }, 1000);
         });
       },
