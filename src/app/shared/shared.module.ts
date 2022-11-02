@@ -8,6 +8,7 @@ import { FooterComponent } from '../layout/footer/footer.component';
 import { LoadingComponent } from './loading/loading.component';
 import { Filter } from './pipe/filter.pipe';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { FilterCategory } from './pipe/filter-category.pipe';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FooterComponent,
     LoadingComponent,
     Filter,
+    FilterCategory
   ],
   imports: [CommonModule, NgxPaginationModule],
   exports: [
@@ -28,7 +30,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FooterComponent,
     LoadingComponent,
     Filter,
-    NgxPaginationModule
+    NgxPaginationModule,
+    FilterCategory
   ],
 })
 export class sharedModule {}

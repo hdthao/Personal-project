@@ -11,6 +11,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ContentComponent implements OnInit {
   jobListData: any;
   config: any;
+  value = '';
   collection: number[] = [];
   @Input() dataToSearch: string;
   @Input() valueToSearch: string;
@@ -33,7 +34,7 @@ export class ContentComponent implements OnInit {
     }
   }
 
-  pageChange(data: any) {
+  pageChange(data: any ) {
     this.router.navigate(['list-job'], { queryParams: { page: data } });
   }
 

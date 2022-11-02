@@ -7,6 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { sharedModule } from './shared/shared.module';
 import { InterceptorInterceptor } from './core/interceptor/interceptor.interceptor';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { InterceptorInterceptor } from './core/interceptor/interceptor.intercept
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpClientModule,
     sharedModule,

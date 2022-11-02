@@ -171,7 +171,7 @@
   </div>
   <div class="result">
     <p class="show-result" *ngIf="jobListData">
-       Results
+      {{ (jobListData.data.data | filter: valueToSearch | filterCategory: sharedDataToSearch).length }} Results
     </p>
     <div class="search-result">
       <input type="text" placeholder="Search job and press enter..." [(ngModel)]="valueToSearch" />

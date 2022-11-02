@@ -8,9 +8,11 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class JobService {
   private apiUrl = environment.apiUrl;
-  constructor(private http: HttpClient) {}
   jobListData = new BehaviorSubject([]);
   sharedData = this.jobListData.asObservable();
+
+  constructor(private http: HttpClient) {}
+
   getCountry() {
     return this.http.get(`${this.apiUrl}/api/countries`);
   }

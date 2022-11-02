@@ -1,8 +1,13 @@
 <div class="container">
   <ng-container *ngIf="jobListData.data">
-    <p>{{jobListData.data.data.length}}</p>
-    <ng-container *ngFor="let item of jobListData.data.data | paginate: config">
-
+    <ng-container
+      *ngFor="
+        let item of jobListData.data.data
+          | paginate: config
+          | filter: valueToSearch
+          | filterCategory: dataToSearch
+      "
+    >
       <ng-container
         *ngIf="
           item.jobTitle.toLowerCase().includes(valueToSearch) ||
@@ -62,7 +67,9 @@
       </ng-container>
     </ng-container>
   </ng-container>
-  <ng-container >
-    <pagination-controls (pageChange)="pageChange($event)"></pagination-controls>
+  <ng-container>
+    <pagination-controls
+      (pageChange)="pageChange($event)"
+    ></pagination-controls>
   </ng-container>
 </div>

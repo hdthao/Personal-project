@@ -23,6 +23,10 @@ export class UserSevices {
     return this.http.get(`${this.apiUrl}/api/users/info`);
   }
 
+  forgotPassword(data: any) {
+    return this.http.post(`${this.apiUrl}/auth/forgot-password`, data);
+  }
+
   switchRole(data: any) {
     return this.http.post(`${this.apiUrl}/api/users/switch-role`, data);
   }

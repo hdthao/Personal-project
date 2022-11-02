@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { LoadingService } from './core/loading-service/loading.service';
 
 @Component({
@@ -6,11 +6,17 @@ import { LoadingService } from './core/loading-service/loading.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewChecked {
   title = 'personal-project';
   loading = this.loader.loading$;
 
-  constructor(public loader: LoadingService) {}
+  constructor(public loader: LoadingService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+
+  ngAfterViewChecked() {
+    this.cdr.detectChanges();
+  }
 }

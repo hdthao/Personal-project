@@ -1,6 +1,5 @@
 import { LabelType, Options } from '@angular-slider/ngx-slider';
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
-import { data } from 'jquery';
+import { Component, OnInit } from '@angular/core';
 import { CategoriesService } from 'src/app/core/model-categories/categories.service';
 import { JobService } from 'src/app/core/model-job/job.service';
 
