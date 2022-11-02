@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { GuardService } from 'src/app/core/guard/gurad.service';
-import { DetailsComponent } from './detail-job/details.component';
+import { ListJob } from './list-job/list-job.component';
 import { PostStepComponent } from './post-job/post-step/post-step.component';
 
 const routes: Routes = [
   {
     path: 'list-job',
-    component: DetailsComponent,
+    component: ListJob,
     canActivate: [GuardService],
   },
   {

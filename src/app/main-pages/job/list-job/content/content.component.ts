@@ -12,9 +12,6 @@ export class ContentComponent implements OnInit {
   jobListData: any;
   config: any;
   value = '';
-  collection: number[] = [];
-  @Input() dataToSearch: string;
-  @Input() valueToSearch: string;
 
   constructor(
     private jobService: JobService,
@@ -29,9 +26,6 @@ export class ContentComponent implements OnInit {
       (params) =>
         (this.config.currentPage = params['page'] ? params['page'] : 1)
     );
-    for (let i = 1; i <= 100; i++) {
-      this.collection.push(i);
-    }
   }
 
   pageChange(data: any ) {

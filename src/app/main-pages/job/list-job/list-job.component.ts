@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-details',
-  templateUrl: './details.component.html',
-  styleUrls: ['./details.component.scss'],
+  selector: 'app-listJob',
+  templateUrl: './list-job.component.html',
+  styleUrls: ['./list-job.component.scss'],
 })
-export class DetailsComponent implements OnInit {
+export class ListJob implements OnInit {
   showAlert: boolean;
   constructor() {}
 

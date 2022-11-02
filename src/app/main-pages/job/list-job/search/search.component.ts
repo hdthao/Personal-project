@@ -21,6 +21,7 @@ export class SearchComponent implements OnInit {
   jobListDataSort: any;
   dataCategoryToSearch: string;
   sharedDataToSearch: string;
+  dataSubcategoryToSearch: any[] = [];
   valueToSearch:string;
   sortBy = 'Payment - DESC';
   valueSort = '';
@@ -49,14 +50,6 @@ export class SearchComponent implements OnInit {
     },
   ];
   category:any;
-  subCategory = [
-    'Display Advertising',
-    'Commerce Marketing',
-    'Influencer Marketing',
-    'Marketing Advice',
-    'Marketing Strategy (Content, Email)',
-    'Mobile App Marketing',
-  ];
   location = [
     'Afghanistan',
     'Aland Islands',
@@ -113,29 +106,20 @@ export class SearchComponent implements OnInit {
     },
   };
 
-  getJobList() {
-    const data = {
-      limit: null,
-    };
-    this.jobService.getJobList(data).subscribe((data: any) => {
-      this.jobService.updateData(data);
-      this.jobService.sharedData.subscribe(x => {
-        this.jobListData = x
-      })
-    });
-  }
-
   getCategory() {
     this.categoryService.getCategory().subscribe((data) => {
       this.category = data;
+      console.log(this.category);
     })
   }
 
-  sortJoblist() {
+  getJobList() {
     const data = {
       limit: null,
-      sortBy: this.valueSort,
-      sortOrder: this.sortOrder,
+      sortBy: this.valueSort || '',
+      sortOrder: this.sortOrder || 'ASC',
+      jobTitle: this.valueToSearch || '',
+      category: this.dataCategoryToSearch || null,
     };
     this.jobService.getJobList(data).subscribe((data) => {
       this.jobService.updateData(data);
@@ -143,23 +127,24 @@ export class SearchComponent implements OnInit {
         this.jobListData = x
       })
     });
+    this.showCategory = false;
   }
 
   selectSort(data: any) {
     this.sortBy = data.name;
     this.valueSort = data.value;
     this.sortOrder = data.sortOrder;
-    this.sortJoblist();
+    this.getJobList();
     this.isToggle = false;
   }
 
-  getValue(data:any) {
+  getValueCategory(data:any) {
     this.dataCategoryToSearch = data;
   }
 
-  applyToSearch() {
-    this.showCategory = false;
-    this.sharedDataToSearch = this.dataCategoryToSearch;
+  getValueSubCategory(data:any) {
+    this.dataSubcategoryToSearch = data;
+    console.log(this.dataSubcategoryToSearch);
   }
 
   clear() {

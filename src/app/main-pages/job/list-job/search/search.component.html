@@ -56,7 +56,7 @@
                 type="radio"
                 id="{{ item.name }}"
                 name="category"
-                (click)="getValue(item.name)"
+                (click)="getValueCategory(item.id)"
               />
               <span class="radio"></span>
               <label for="{{ item.name }}">{{ item.name }}</label>
@@ -65,7 +65,7 @@
         </ul>
         <div class="select-btn">
           <button class="select-btn__clear" (click)="clear()">CLEAR</button>
-          <button class="select-btn__apply" (click)="applyToSearch()">
+          <button class="select-btn__apply" (click)="getJobList()">
             APPLY
           </button>
         </div>
@@ -82,11 +82,19 @@
       <input type="checkbox" id="subCategory" *ngIf="showSubCategory" />
       <div class="select-subCategory shared">
         <ul class="subCategory-content content">
-          <li *ngFor="let item of subCategory" class="list-subCategory list">
-            <input type="checkbox" id="{{ item }}" />
-            <span class="checkbox"></span>
-            <label for="{{ item }}">{{ item }}</label>
-          </li>
+          <ng-container *ngIf="category">
+            <ng-container *ngFor="let item of category.data">
+              <li *ngFor="let i of item.children" class="list-subCategory list">
+                <input
+                  type="checkbox"
+                  id="{{ i.name }}"
+                  (click)="getValueSubCategory(i.name)"
+                />
+                <span class="checkbox"></span>
+                <label for="{{ i.name }}">{{ i.name }}</label>
+              </li>
+            </ng-container>
+          </ng-container>
         </ul>
         <div class="select-btn">
           <button class="select-btn__clear">CLEAR</button>
@@ -171,10 +179,15 @@
   </div>
   <div class="result">
     <p class="show-result" *ngIf="jobListData">
-      {{ (jobListData.data.data | filter: valueToSearch | filterCategory: sharedDataToSearch).length }} Results
+      {{ jobListData.data.data.length }} Results
     </p>
     <div class="search-result">
-      <input type="text" placeholder="Search job and press enter..." [(ngModel)]="valueToSearch" />
+      <input
+        type="text"
+        placeholder="Search job and press enter..."
+        [(ngModel)]="valueToSearch"
+        (input)="getJobList()"
+      />
       <div class="sort-by">
         <label for="sort"><span>Sort by/</span></label>
         <div class="dropdown" (clickOutside)="clickOutside($event)">
@@ -191,7 +204,4 @@
     </div>
   </div>
 </div>
-<app-content
-  [dataToSearch]="sharedDataToSearch"
-  [valueToSearch]="valueToSearch"
-></app-content>
+<app-content></app-content>
