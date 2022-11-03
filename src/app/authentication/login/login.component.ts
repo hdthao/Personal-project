@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { GuardService } from 'src/app/core/guard/gurad.service';
+import { GuardService } from 'src/app/core/guard/guard.service';
 import { UserSevices } from 'src/app/core/model-user/user.service';
 import { Auhentication } from '../authentication.service';
 

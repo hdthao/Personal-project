@@ -11,6 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { SearchPipe } from '../shared/pipe/search.pipe';
+import { ResetPasswordComponent } from './reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { SearchPipe } from '../shared/pipe/search.pipe';
     ForgotPwComponent,
     HeaderComponent,
     SearchPipe,
-    // FooterComponent
+    ResetPasswordComponent
   ],
   imports: [
     CommonModule,

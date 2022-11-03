@@ -1,5 +1,6 @@
 import { LabelType, Options } from '@angular-slider/ngx-slider';
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { CategoriesService } from 'src/app/core/model-categories/categories.service';
 import { JobService } from 'src/app/core/model-job/job.service';
 
@@ -10,6 +11,7 @@ import { JobService } from 'src/app/core/model-job/job.service';
 })
 export class SearchComponent implements OnInit {
   isToggle = false;
+  enableSubCategory = true;
   showJob = true;
   showCategory = true;
   showSubCategory = true;
@@ -19,10 +21,11 @@ export class SearchComponent implements OnInit {
   showPrice = true;
   jobListData: any;
   jobListDataSort: any;
-  dataCategoryToSearch: string;
-  sharedDataToSearch: string;
-  dataSubcategoryToSearch: any[] = [];
-  valueToSearch:string;
+  dataCategoryToSearch: any;
+  categoryName: string;
+  subCategoryName: string;
+  dataSubcategoryToSearch: any;
+  valueToSearch: string;
   sortBy = 'Payment - DESC';
   valueSort = '';
   sortOrder = '';
@@ -49,7 +52,7 @@ export class SearchComponent implements OnInit {
       sortOrder: 'DESC',
     },
   ];
-  category:any;
+  category: any;
   location = [
     'Afghanistan',
     'Aland Islands',
@@ -73,12 +76,13 @@ export class SearchComponent implements OnInit {
 
   constructor(
     private jobService: JobService,
-    private categoryService: CategoriesService
+    private categoryService: CategoriesService,
+    private router: Router,
+    private activatedRouter: ActivatedRoute
   ) {}
-
   ngOnInit(): void {
+    this.getCategory();
     this.getJobList();
-    this.getCategory()
   }
 
   toggle() {
@@ -109,25 +113,59 @@ export class SearchComponent implements OnInit {
   getCategory() {
     this.categoryService.getCategory().subscribe((data) => {
       this.category = data;
-      console.log(this.category);
-    })
+      setTimeout(() => {
+        const dataCategory = localStorage.getItem('category');
+        const saveCategory = document.getElementById(
+          `${dataCategory}`
+        ) as HTMLInputElement | null;
+        if (saveCategory?.id === dataCategory) {
+          saveCategory.checked = true;
+        }
+        if (this.dataCategoryToSearch === '') {
+          if (saveCategory) {
+            saveCategory.checked = false;
+          }
+        }
+        const dataSubcategory = localStorage.getItem('subCategory');
+        const saveSubCategory = document.getElementById(
+          `${dataSubcategory}`
+        ) as HTMLInputElement | null;
+        if (saveSubCategory?.id === dataSubcategory) {
+          saveSubCategory.checked = true;
+        }
+        if (this.dataSubcategoryToSearch === '') {
+          if (saveSubCategory) {
+            saveSubCategory.checked = false;
+          }
+        }
+      }, 100);
+    });
   }
 
   getJobList() {
+    this.dataCategoryToSearch =
+      this.activatedRouter.snapshot.queryParamMap.get('category');
+    this.dataSubcategoryToSearch =
+      this.activatedRouter.snapshot.queryParamMap.get('subCategory');
     const data = {
       limit: null,
       sortBy: this.valueSort || '',
       sortOrder: this.sortOrder || 'ASC',
       jobTitle: this.valueToSearch || '',
       category: this.dataCategoryToSearch || null,
+      subCategory: this.dataSubcategoryToSearch || null,
     };
     this.jobService.getJobList(data).subscribe((data) => {
       this.jobService.updateData(data);
-      this.jobService.sharedData.subscribe(x => {
-        this.jobListData = x
-      })
+      this.jobListData = data;
     });
+    if (this.dataCategoryToSearch == '' || this.dataCategoryToSearch == null) {
+      this.enableSubCategory = true;
+    } else {
+      this.enableSubCategory = false;
+    }
     this.showCategory = false;
+    this.showSubCategory = false;
   }
 
   selectSort(data: any) {
@@ -138,16 +176,66 @@ export class SearchComponent implements OnInit {
     this.isToggle = false;
   }
 
-  getValueCategory(data:any) {
-    this.dataCategoryToSearch = data;
+  getValueCategory(data: any) {
+    this.dataCategoryToSearch = data.id;
+    this.categoryName = data.name;
+    this.router.navigate(['/list-job'], {
+      queryParams: { category: `${this.dataCategoryToSearch}` },
+    });
+    localStorage.setItem('category', this.dataCategoryToSearch);
+    this.dataSubcategoryToSearch = null;
+    localStorage.removeItem('subCategory');
   }
 
-  getValueSubCategory(data:any) {
-    this.dataSubcategoryToSearch = data;
-    console.log(this.dataSubcategoryToSearch);
+  getValueSubCategory(data: any) {
+    this.dataSubcategoryToSearch = data.id;
+    this.subCategoryName = data.name;
+    this.router.navigate(['/list-job'], {
+      queryParams: {
+        category: `${this.dataCategoryToSearch}`,
+        subCategory: `${this.dataSubcategoryToSearch}`,
+      },
+    });
+    localStorage.setItem('subCategory', this.dataSubcategoryToSearch);
   }
 
-  clear() {
-    window.location.reload();
+  clearCategory() {
+    const inputs = document.getElementById(
+      `${this.dataCategoryToSearch}`
+    ) as HTMLInputElement | null;
+    if (inputs) {
+      inputs.checked = false;
+    }
+    localStorage.removeItem('category');
+    localStorage.removeItem('subCategory');
+    this.showCategory = false;
+    this.getCategory();
+    this.router.navigate(['/list-job'], {
+      queryParams: { category: null },
+    });
+    setTimeout(() => {
+      this.getJobList();
+    }, 100);
+  }
+
+  clearSubCategory() {
+    const inputs = document.getElementById(
+      `${this.dataSubcategoryToSearch}`
+    ) as HTMLInputElement | null;
+    if (inputs) {
+      inputs.checked = false;
+    }
+    localStorage.removeItem('subCategory');
+    this.showSubCategory = false;
+    this.router.navigate(['/list-job'], {
+      queryParams: {
+        category: `${this.dataCategoryToSearch}`,
+        subCategory: null,
+      },
+    });
+    setTimeout(() => {
+      this.getJobList();
+    }, 100);
+    this.getCategory();
   }
 }

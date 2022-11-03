@@ -54,17 +54,17 @@
             <li *ngFor="let item of category.data" class="list-category list">
               <input
                 type="radio"
-                id="{{ item.name }}"
+                id="{{ item.id }}"
                 name="category"
-                (click)="getValueCategory(item.id)"
+                (click)="getValueCategory(item)"
               />
               <span class="radio"></span>
-              <label for="{{ item.name }}">{{ item.name }}</label>
+              <label for="{{ item.id }}">{{ item.name }}</label>
             </li>
           </ng-container>
         </ul>
         <div class="select-btn">
-          <button class="select-btn__clear" (click)="clear()">CLEAR</button>
+          <button class="select-btn__clear" (click)="clearCategory()">CLEAR</button>
           <button class="select-btn__apply" (click)="getJobList()">
             APPLY
           </button>
@@ -75,6 +75,7 @@
       class="search-group search-subCategory"
       clickOutside
       (clickOutside)="showSubCategory = false"
+      [class.enable]="enableSubCategory"
     >
       <label for="subCategory" (click)="showSubCategory = true"
         ><span>Sub Category<i class="fa-solid fa-sort-down"></i></span
@@ -84,21 +85,29 @@
         <ul class="subCategory-content content">
           <ng-container *ngIf="category">
             <ng-container *ngFor="let item of category.data">
-              <li *ngFor="let i of item.children" class="list-subCategory list">
-                <input
-                  type="checkbox"
-                  id="{{ i.name }}"
-                  (click)="getValueSubCategory(i.name)"
-                />
-                <span class="checkbox"></span>
-                <label for="{{ i.name }}">{{ i.name }}</label>
-              </li>
+              <ng-container *ngIf="item.id === dataCategoryToSearch">
+                <li
+                  *ngFor="let i of item.children"
+                  class="list-subCategory list"
+                >
+                  <input
+                    type="radio"
+                    id="{{ i.id }}"
+                    name="subCategory"
+                    (click)="getValueSubCategory(i)"
+                  />
+                  <span class="radio"></span>
+                  <label for="{{ i.id }}">{{ i.name }}</label>
+                </li>
+              </ng-container>
             </ng-container>
           </ng-container>
         </ul>
         <div class="select-btn">
-          <button class="select-btn__clear">CLEAR</button>
-          <button class="select-btn__apply">APPLY</button>
+          <button class="select-btn__clear" (click)="clearSubCategory()">CLEAR</button>
+          <button class="select-btn__apply" (click)="getJobList()">
+            APPLY
+          </button>
         </div>
       </div>
     </div>

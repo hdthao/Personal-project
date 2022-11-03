@@ -1,8 +1,7 @@
 <header class="header">
   <div class="nav">
     <a href=""><img src="https://sproutgigs.com/assets/images/logo-sg.svg" alt="" class="nav__logo"></a>
-    <ul class="nav-menu" [class.isOpen]="isOpenMenu">
-      <li class="menu-item" *ngIf="isOpenMenu"><a class="menu-item__link"> <i (click)="toggleMenu()" class="fa-solid fa-xmark"></i></a></li>
+    <ul class="nav-menu">
       <li class="menu-item"><a href="" class="menu-item__link">Explore Gigs</a></li>
       <li class="menu-item"><a href="" class="menu-item__link">Affiliate Program</a></li>
       <li class="menu-item"><a href="" class="menu-item__link">Freelance & Earn</a></li>
@@ -14,5 +13,13 @@
        <i class="fa-solid fa-bars"></i>
       </div>
     </div>
+  </div>
+  <div class="dropdown-menu show">
+    <ul class="dropdown-nav-menu" [class.show]="isOpenMenu">
+      <li class="menu-item" ><a class="menu-item__link"> <i class="fa-solid fa-xmark" (click)="isOpenMenu = false"></i></a></li>
+      <li class="menu-item"><a href="" class="menu-item__link">Explore Gigs</a></li>
+      <li class="menu-item"><a href="" class="menu-item__link">Affiliate Program</a></li>
+      <li class="menu-item"><a href="" class="menu-item__link">Freelance & Earn</a></li>
+    </ul>
   </div>
 </header>

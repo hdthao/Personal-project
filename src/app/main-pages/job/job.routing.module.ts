@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GuardService } from 'src/app/core/guard/gurad.service';
+import { GuardService } from 'src/app/core/guard/guard.service';
 import { ListJob } from './list-job/list-job.component';
 import { PostStepComponent } from './post-job/post-step/post-step.component';
 

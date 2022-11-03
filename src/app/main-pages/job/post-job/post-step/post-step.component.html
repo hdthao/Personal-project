@@ -16,7 +16,7 @@
     </ul>
     <div class="main">
       <!-- step1 -->
-      <div class="select-region" *ngIf="!swtichStep">
+      <div class="select-region" [hidden]="swtichStep">
         <span>Choose targeting zone</span>
         <div class="list-region">
           <div
@@ -69,7 +69,7 @@
         </div>
       </div>
       <!-- step2 -->
-      <div class="select-category" *ngIf="swtichStep">
+      <div class="select-category" [hidden]="!swtichStep">
         <span>Choose the job category</span>
         <div class="list-category">
           <ng-container *ngIf="listCategory">

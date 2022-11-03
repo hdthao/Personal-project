@@ -30,4 +30,7 @@ export class UserSevices {
   switchRole(data: any) {
     return this.http.post(`${this.apiUrl}/api/users/switch-role`, data);
   }
+  resetPassword(data: any) {
+    return this.http.post(`${this.apiUrl}/auth/reset-password`, data)
+  }
 }
