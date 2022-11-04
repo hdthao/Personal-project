@@ -7,7 +7,14 @@
 .main {
   display: flex;
 }
-
+.showError {
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 80px;
+  color: #e02832;
+  background: #f8d7da;
+  align-items: center;
+}
 .form {
   width: 46%;
   padding-left: 60px;

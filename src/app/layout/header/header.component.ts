@@ -8,9 +8,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   isOpenMenu = false;
-  toggleMenu() {
-    this.isOpenMenu = !this.isOpenMenu;
-  }
+
   constructor(private router: Router) {}
   onSignUp() {
     this.router.navigate(['/signUp']);

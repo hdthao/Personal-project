@@ -10,33 +10,15 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class ContentComponent implements OnInit {
   jobListData: any;
-  config: any;
+  @Input() config: any;
   value = '';
 
-  constructor(
-    private jobService: JobService,
-    private activatedRouter: ActivatedRoute,
-    private router: Router
-  ) {
-    this.config = {
-      currentPage: 1,
-      itemsPerPage: 10,
-    };
-    activatedRouter.queryParams.subscribe(
-      (params) =>
-        (this.config.currentPage = params['page'] ? params['page'] : 1)
-    );
-  }
-
-  pageChange(data: any ) {
-    this.router.navigate(['list-job'], { queryParams: { page: data } });
-  }
+  constructor(private jobService: JobService) {}
 
   ngOnInit(): void {
+    this.config;
     this.jobService.sharedData.subscribe((x) => {
       this.jobListData = x;
     });
   }
-
-  click() {}
 }

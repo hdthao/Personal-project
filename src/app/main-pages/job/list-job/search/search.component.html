@@ -64,7 +64,9 @@
           </ng-container>
         </ul>
         <div class="select-btn">
-          <button class="select-btn__clear" (click)="clearCategory()">CLEAR</button>
+          <button class="select-btn__clear" (click)="clearCategory()">
+            CLEAR
+          </button>
           <button class="select-btn__apply" (click)="getJobList()">
             APPLY
           </button>
@@ -104,7 +106,9 @@
           </ng-container>
         </ul>
         <div class="select-btn">
-          <button class="select-btn__clear" (click)="clearSubCategory()">CLEAR</button>
+          <button class="select-btn__clear" (click)="clearSubCategory()">
+            CLEAR
+          </button>
           <button class="select-btn__apply" (click)="getJobList()">
             APPLY
           </button>
@@ -188,7 +192,7 @@
   </div>
   <div class="result">
     <p class="show-result" *ngIf="jobListData">
-      {{ jobListData.data.data.length }} Results
+      {{ jobListData.data.total }} Results
     </p>
     <div class="search-result">
       <input
@@ -213,4 +217,5 @@
     </div>
   </div>
 </div>
-<app-content></app-content>
+<app-content [config]="config"></app-content>
+<pagination-controls (pageChange)="pageChange($event)" style="text-align: center;"></pagination-controls>

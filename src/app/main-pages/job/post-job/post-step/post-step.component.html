@@ -5,6 +5,9 @@
     (changeShowAlert)="changeShowAlert($event)"
   ></app-detail-header>
   <div class="container">
+    <p class="showError" *ngIf="showErrors">
+      Data post has been failed <i class="fa-solid fa-xmark" (click)="showErrors = false"></i>
+    </p>
     <h2 class="header">Post Job</h2>
     <ul class="job-list">
       <li class="job-item">

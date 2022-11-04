@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { error } from 'jquery';
 import { UserSevices } from 'src/app/core/model-user/user.service';
 import { checkEmail } from 'src/app/shared/validator/validator';
 
@@ -12,7 +13,7 @@ import { checkEmail } from 'src/app/shared/validator/validator';
 export class ForgotPwComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
-
+  showError = false;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -38,6 +39,8 @@ export class ForgotPwComponent implements OnInit {
   getPassword() {
     this.userService.forgotPassword(this.form.value).subscribe(() => {
       alert('Please check your email to confirm your reset password');
+    },(error) => {
+      this.showError = true;
     });
   }
 

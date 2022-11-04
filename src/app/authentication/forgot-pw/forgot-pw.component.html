@@ -1,5 +1,9 @@
 <div class="authentication">
   <app-header></app-header>
+  <p class="showError" *ngIf="showError">
+    Email is invalid or email is not registered
+    <i class="fa-solid fa-xmark" (click)="showError = false"></i>
+  </p>
   <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="container">
       <div class="btn-back">

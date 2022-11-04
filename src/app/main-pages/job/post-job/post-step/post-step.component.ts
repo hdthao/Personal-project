@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
+import { error } from 'jquery';
 import { CategoriesService } from 'src/app/core/model-categories/categories.service';
 import { JobService } from 'src/app/core/model-job/job.service';
 
@@ -31,7 +32,7 @@ export class PostStepComponent implements OnInit {
   subCategoryName: string = '';
   showAlert: boolean = false;
   swtichStep = false;
-
+  showErrors = false;
   constructor(
     private router: Router,
     private jobService: JobService,
@@ -125,9 +126,9 @@ export class PostStepComponent implements OnInit {
     };
     this.showLoading = true
     this.jobService.postJob(jobDataToPost).subscribe((data) => {
-      console.log(data);
-
       this.router.navigate(['/list-job']);
+    },(error) => {
+      this.showErrors = true;
     });
   }
 }

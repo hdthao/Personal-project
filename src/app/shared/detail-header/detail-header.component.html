@@ -164,5 +164,10 @@
       </li>
     </ul>
   </div>
-  <button class="res-btn btn-find">FIND JOBS</button>
+  <button class="res-btn btn-post" *ngIf="isSwitch" (click)="gotoPost()">
+    POST JOBS
+  </button>
+  <button class="res-btn btn-find" *ngIf="!isSwitch" (click)="gotoFind()">
+    FIND JOBS
+  </button>
 </div>
