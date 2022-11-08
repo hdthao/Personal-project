@@ -209,7 +209,7 @@
           ></label>
           <div class="dropdown-list" *ngIf="isToggle">
             <ng-container *ngFor="let item of listSort">
-              <span (click)="selectSort(item)">{{ item.name }}</span>
+              <span (click)="selectSort(item)">{{ item.name }} </span>
             </ng-container>
           </div>
         </div>
@@ -218,4 +218,4 @@
   </div>
 </div>
 <app-content [config]="config"></app-content>
-<pagination-controls (pageChange)="pageChange($event)" style="text-align: center;"></pagination-controls>
+<pagination-controls (pageChange)="pageChange($event)"></pagination-controls>

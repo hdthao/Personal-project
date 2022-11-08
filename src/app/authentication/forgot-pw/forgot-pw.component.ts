@@ -14,6 +14,7 @@ export class ForgotPwComponent implements OnInit {
   form: FormGroup;
   isSubmitted = false;
   showError = false;
+  showSuccess = false;
   constructor(
     private router: Router,
     private fb: FormBuilder,
@@ -37,11 +38,14 @@ export class ForgotPwComponent implements OnInit {
   }
 
   getPassword() {
-    this.userService.forgotPassword(this.form.value).subscribe(() => {
-      alert('Please check your email to confirm your reset password');
-    },(error) => {
-      this.showError = true;
-    });
+    this.userService.forgotPassword(this.form.value).subscribe(
+      () => {
+        this.showSuccess = true;
+      },
+      (error) => {
+        this.showError = true;
+      }
+    );
   }
 
   backToLogin() {

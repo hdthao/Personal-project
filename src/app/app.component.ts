@@ -1,4 +1,9 @@
-import { AfterViewChecked, ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import {
+  AfterViewChecked,
+  ChangeDetectorRef,
+  Component,
+  OnInit,
+} from '@angular/core';
 import { LoadingService } from './core/loading-service/loading.service';
 
 @Component({
@@ -12,9 +17,7 @@ export class AppComponent implements OnInit, AfterViewChecked {
 
   constructor(public loader: LoadingService, private cdr: ChangeDetectorRef) {}
 
-  ngOnInit(): void {
-
-  }
+  ngOnInit(): void {}
 
   ngAfterViewChecked() {
     this.cdr.detectChanges();

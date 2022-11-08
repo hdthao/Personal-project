@@ -6,7 +6,8 @@
   ></app-detail-header>
   <div class="container">
     <p class="showError" *ngIf="showErrors">
-      Data post has been failed <i class="fa-solid fa-xmark" (click)="showErrors = false"></i>
+      Data post has been failed
+      <i class="fa-solid fa-xmark" (click)="showErrors = false"></i>
     </p>
     <h2 class="header">Post Job</h2>
     <ul class="job-list">
@@ -22,11 +23,7 @@
       <div class="select-region" [hidden]="swtichStep">
         <span>Choose targeting zone</span>
         <div class="list-region">
-          <div
-            class="item-region"
-            *ngFor="let item of dataListTargetZone"
-            (click)="getTargetZoneFromApi()"
-          >
+          <div class="item-region" *ngFor="let item of dataListTargetZone">
             <ng-container>
               <input
                 type="radio"
@@ -55,13 +52,13 @@
                 >
                   <input
                     type="checkbox"
-                    id="{{ item.name }}"
+                    id="{{ item.id }}"
                     value="{{ item.name }}"
                     name="{{ item.name }}"
-                    [(ngModel)]="jobData[i]"
-                    (ngModelChange)="getCtry($event)"
+                    [checked]="jobData[i]"
+                    (click)="getCtry($event)"
                   />
-                  <label for="{{ item.name }}">{{ item.name }}</label>
+                  <label for="{{ item.id }}">{{ item.name }}</label>
                 </div>
               </ng-container>
             </ng-container>

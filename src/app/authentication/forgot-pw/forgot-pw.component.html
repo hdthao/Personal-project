@@ -1,9 +1,17 @@
 <div class="authentication">
   <app-header></app-header>
-  <p class="showError" *ngIf="showError">
-    Email is invalid or email is not registered
-    <i class="fa-solid fa-xmark" (click)="showError = false"></i>
-  </p>
+  <div class="showError" [class.show]="showError">
+    <p>
+      Email is not registered
+      <i class="fa-solid fa-xmark" (click)="showError = false"></i>
+    </p>
+  </div>
+  <div class="background" [class.active]="showSuccess">
+    <div class="showSuccess">
+      <p>Please check your email to confirm your reset password</p>
+      <button (click)="showSuccess = false">Close</button>
+    </div>
+  </div>
   <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
     <div class="container">
       <div class="btn-back">
@@ -28,7 +36,7 @@
         >
         <span
           class="showErrors"
-          *ngIf="!f['email'].errors?.['required']  && f['email'].errors?.['emailInvalid']"
+          *ngIf="!f['email'].errors?.['required']  && f['email'].errors?.['emailInvalid'] && isSubmitted"
           >Email is invalid</span
         >
         <div class="form-footer">

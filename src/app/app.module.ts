@@ -5,15 +5,13 @@ import { AppComponent } from './app.component';
 import { MainPagesComponent } from './main-pages/main-pages.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { sharedModule } from './shared/shared.module';
+import { SharedModule } from './shared/shared.module';
 import { InterceptorInterceptor } from './core/interceptor/interceptor.interceptor';
-import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { UrlInterceptor } from './core/interceptor/url.interceptor';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainPagesComponent,
-  ],
+  declarations: [AppComponent, MainPagesComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -21,11 +19,20 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
     MatProgressSpinnerModule,
     ReactiveFormsModule,
     HttpClientModule,
-    sharedModule,
+    SharedModule,
   ],
-  providers: [{
-    provide: HTTP_INTERCEPTORS, useClass: InterceptorInterceptor, multi:true,
-  }],
-  bootstrap: [AppComponent]
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: InterceptorInterceptor,
+      multi: true,
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: UrlInterceptor,
+      multi: true,
+    },
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

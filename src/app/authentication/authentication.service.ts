@@ -3,13 +3,10 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root',
 })
-export class Auhentication {
-  isLogin = false;
+export class Authentication {
   constructor() {}
 
-  login() {
-    this.isLogin = true;
+  isAuthenticated() {
+    return localStorage.getItem('userToken') != null;
   }
-  isLogout = false;
-
 }

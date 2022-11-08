@@ -326,6 +326,7 @@ i {
   }
 
 }
+
 .sort-by {
   display: flex;
   justify-content: space-between;
@@ -337,6 +338,7 @@ i {
   }
 
 }
+
 .show-result {
   font-weight: 400;
   font-size: 14px;
@@ -405,6 +407,17 @@ i {
       }
     }
   }
+
+  .ngx-pagination {
+    text-align: center;
+
+    .current {
+      background: var(--primary-color) !important;
+      border-radius: 2px;
+    }
+  }
+
+
 }
 
 .slider-values {
@@ -528,5 +541,26 @@ i {
     span {
       display: block;
     }
+  }
+}
+
+@media screen and (max-width: 361px) {
+  ::ng-deep {
+    .ngx-pagination {
+      .current {
+        padding: 0 4px !important;
+        font-size: 12px;
+      }
+
+      a {
+        padding: 0 4px !important;
+        font-size: 12px !important;
+      }
+
+      button {
+        padding: 0 4px !important;
+      }
+    }
+
   }
 }

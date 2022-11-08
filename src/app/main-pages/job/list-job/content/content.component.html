@@ -2,50 +2,48 @@
   <ng-container *ngIf="jobListData.data">
     <ng-container *ngFor="let item of jobListData.data.data | paginate: config">
       <div class="details-job">
-          <div class="job-header">
-            <p class="job-header__title">
-              {{ item.jobTitle }} <span>FEATURED</span>
-            </p>
-            <div class="job-icon">
-              <i class="fa-solid fa-arrow-up-right-from-square"></i>
-              <i class="fa-solid fa-eye-slash"></i>
+        <div class="job-header">
+          <p class="job-header__title">
+            {{ item.jobTitle }} <span>FEATURED</span>
+          </p>
+          <div class="job-icon">
+            <i class="fa-solid fa-arrow-up-right-from-square"></i>
+            <i class="fa-solid fa-eye-slash"></i>
+          </div>
+        </div>
+        <div class="job-infor">
+          <div class="content">
+            <div class="job-infor__bar">
+              <p><span>INT</span>{{ item.targetZone }}</p>
+              <p><i class="fa-solid fa-signal"></i>{{ item.jobLevel }}</p>
+            </div>
+            <div class="job-infor__category">
+              <p>
+                <span>{{ item.category.name }}</span>
+              </p>
+              <p>
+                <span>{{ item.subCategory.name }}</span>
+              </p>
             </div>
           </div>
-          <div class="job-infor">
-            <div class="content">
-              <div class="job-infor__bar">
-                <p><span>INT</span>{{ item.targetZone }}</p>
-                <p><i class="fa-solid fa-signal"></i>{{ item.jobLevel }}</p>
-              </div>
-              <div class="job-infor__category">
-                <p>
-                  <span>{{ item.category.name }}</span>
-                </p>
-                <p>
-                  <span>{{ item.subCategory.name }}</span>
-                </p>
-              </div>
-            </div>
-            <div class="job-infor__icon">
-              <i class="fa-solid fa-lock"></i>
-              <i class="fa-solid fa-lock"></i>
-            </div>
-            <div class="job-infor__done">
-              <p><span>94</span> of <span>199</span> done</p>
-              <progress id="file" value="32" max="100">32%</progress>
-            </div>
-            <div class="job-infor__rate">
-              <div class="price">
-                <span>$</span>
-                <p>{{ item.payment }}</p>
-              </div>
-              <span>1 Days rate</span>
-            </div>
+          <div class="job-infor__icon">
+            <i class="fa-solid fa-lock"></i>
+            <i class="fa-solid fa-lock"></i>
           </div>
+          <div class="job-infor__done">
+            <p><span>94</span> of <span>199</span> done</p>
+            <progress id="file" value="32" max="100">32%</progress>
+          </div>
+          <div class="job-infor__rate">
+            <div class="price">
+              <span>$</span>
+              <p>{{ item.payment }}</p>
+            </div>
+            <span>1 Days rate</span>
+          </div>
+        </div>
       </div>
     </ng-container>
   </ng-container>
-  <ng-container>
-
-  </ng-container>
+  <ng-container> </ng-container>
 </div>

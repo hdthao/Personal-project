@@ -19,7 +19,7 @@ import { FilterCategory } from './pipe/filter-category.pipe';
     FooterComponent,
     LoadingComponent,
     Filter,
-    FilterCategory
+    FilterCategory,
   ],
   imports: [CommonModule, NgxPaginationModule],
   exports: [
@@ -31,7 +31,7 @@ import { FilterCategory } from './pipe/filter-category.pipe';
     LoadingComponent,
     Filter,
     NgxPaginationModule,
-    FilterCategory
+    FilterCategory,
   ],
 })
-export class sharedModule {}
+export class SharedModule {}

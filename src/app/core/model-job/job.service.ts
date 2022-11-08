@@ -7,26 +7,21 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root',
 })
 export class JobService {
-  private apiUrl = environment.apiUrl;
   jobListData = new BehaviorSubject([]);
   sharedData = this.jobListData.asObservable();
 
   constructor(private http: HttpClient) {}
 
   getCountry() {
-    return this.http.get(`${this.apiUrl}/api/countries`);
-  }
-
-  getTargetZone(data: any) {
-    return this.http.get(`${this.apiUrl}/api/countries?target_zone=${data} `);
+    return this.http.get('api/countries');
   }
 
   postJob(data: any) {
-    return this.http.post(`${this.apiUrl}/api/jobs/create`, data);
+    return this.http.post('api/jobs/create', data);
   }
 
   getJobList(data: any) {
-    return this.http.post(`${this.apiUrl}/api/jobs/list`, data);
+    return this.http.post('api/jobs/list', data);
   }
 
   updateData(data: any) {

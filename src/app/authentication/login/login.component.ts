@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { GuardService } from 'src/app/core/guard/guard.service';
 import { UserSevices } from 'src/app/core/model-user/user.service';
-import { Auhentication } from '../authentication.service';
+import { Authentication } from '../authentication.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     private router: Router,
     private userService: UserSevices,
     private fb: FormBuilder,
-    private auth: Auhentication
+    private auth: Authentication
   ) {}
 
   ngOnInit(): void {
@@ -50,13 +50,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('userToken', datas.data.token);
         this.userService.getUserInfor().subscribe((data: any) => {
           localStorage.setItem('userRole', data.data.role);
-          if (localStorage.getItem('userToken') !== null) {
-            this.auth.login();
-          }
-          this.showLoading = true;
-          setTimeout(() => {
-            this.router.navigate(['/list-job']);
-          }, 1000);
+          this.router.navigate(['/list-job']);
         });
       },
       (error) => {

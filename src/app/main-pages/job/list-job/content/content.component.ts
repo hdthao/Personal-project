@@ -11,12 +11,10 @@ import { ActivatedRoute, Router } from '@angular/router';
 export class ContentComponent implements OnInit {
   jobListData: any;
   @Input() config: any;
-  value = '';
 
   constructor(private jobService: JobService) {}
 
   ngOnInit(): void {
-    this.config;
     this.jobService.sharedData.subscribe((x) => {
       this.jobListData = x;
     });

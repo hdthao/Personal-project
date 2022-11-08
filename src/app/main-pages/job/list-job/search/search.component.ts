@@ -29,8 +29,8 @@ export class SearchComponent implements OnInit {
   valueToSearch: string;
   pageNumber: number;
   sortBy = 'Newest';
-  valueSort = '';
-  sortOrder = '';
+  valueSort: string;
+  sortOrder: string;
   config: any;
   job = ['Starter', 'Advanced', 'Expert'];
   listSort = [
@@ -83,6 +83,7 @@ export class SearchComponent implements OnInit {
     private router: Router,
     private activatedRouter: ActivatedRoute
   ) {}
+
   ngOnInit(): void {
     this.getCategory();
     this.getJobList();
@@ -146,7 +147,6 @@ export class SearchComponent implements OnInit {
   }
 
   pageChange(data: any) {
-    this.config.currentPage = data;
     this.router.navigate(['/list-job'], {
       queryParams: {
         page: data,
@@ -158,20 +158,16 @@ export class SearchComponent implements OnInit {
       this.getJobList();
     }, 100);
   }
+
   getJobList() {
     this.activatedRouter.queryParamMap.subscribe((param) => {
       this.pageNumber = Number(param.get('page'));
-    });
-    console.log(this.pageNumber);
-    this.activatedRouter.queryParamMap.subscribe((params) => {
-      this.dataCategoryToSearch = params.get('category');
-      if (params.get('category') === 'null') {
+      this.dataCategoryToSearch = param.get('category');
+      if (param.get('category') === 'null') {
         this.dataCategoryToSearch = null;
       }
-    });
-    this.activatedRouter.queryParamMap.subscribe((params) => {
-      this.dataSubcategoryToSearch = params.get('subCategory');
-      if (params.get('subCategory') === 'null') {
+      this.dataSubcategoryToSearch = param.get('subCategory');
+      if (param.get('subCategory') === 'null') {
         this.dataSubcategoryToSearch = null;
       }
     });
@@ -250,13 +246,13 @@ export class SearchComponent implements OnInit {
     localStorage.removeItem('category');
     localStorage.removeItem('subCategory');
     this.showCategory = false;
-    this.getCategory();
     this.router.navigate(['/list-job'], {
       queryParams: { page: 1, category: '' },
     });
     setTimeout(() => {
       this.getJobList();
     }, 100);
+    this.getCategory();
   }
 
   clearSubCategory() {

@@ -12,17 +12,17 @@ import { Authentication } from 'src/app/authentication/authentication.service';
 @Injectable({
   providedIn: 'root',
 })
-export class GuardService implements CanActivate {
+export class GuardRootSevice implements CanActivate {
   constructor(private Auth: Authentication, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
   ): boolean {
     if (this.Auth.isAuthenticated()) {
-      return true;
-    } else {
-      this.router.navigate(['/login']);
+      this.router.navigate(['']);
       return false;
+    } else {
+      return true;
     }
   }
 }

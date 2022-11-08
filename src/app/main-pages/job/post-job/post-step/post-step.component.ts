@@ -50,10 +50,6 @@ export class PostStepComponent implements OnInit {
     });
   }
 
-  getTargetZoneFromApi() {
-    this.jobService.getTargetZone(this.listTargetZone).subscribe();
-  }
-
   getCategoriesFromApi() {
     this.categoryService.getCategory().subscribe((data) => {
       this.listCategory = data;
@@ -62,10 +58,11 @@ export class PostStepComponent implements OnInit {
 
   getCtry(data: any) {
     let indexOfData = this.jobData.data[this.index];
-    if (data) {
+    if (data.target.checked) {
       this.listCountry.push(indexOfData.name);
     } else {
       let i = this.listCountry.indexOf(indexOfData.name);
+      console.log(i);
       if (i > -1) {
         this.listCountry.splice(i, 1);
       }
@@ -115,7 +112,7 @@ export class PostStepComponent implements OnInit {
       subCategory: this.subCategoryID,
       payment: 0,
       targetZone: this.listTargetZone,
-      countryIds: [this.listCountry],
+      countryIds: this.listCountry,
       speed: 10,
       workersNeeded: 30,
       maxPosition: 10,
@@ -124,11 +121,15 @@ export class PostStepComponent implements OnInit {
       pauseAfterApproval: true,
       estimatedJobCosts: 10,
     };
-    this.showLoading = true
-    this.jobService.postJob(jobDataToPost).subscribe((data) => {
-      this.router.navigate(['/list-job']);
-    },(error) => {
-      this.showErrors = true;
-    });
+    this.showLoading = true;
+    this.jobService.postJob(jobDataToPost).subscribe(
+      (data) => {
+        this.router.navigate(['/list-job']);
+        localStorage.removeItem('category');
+      },
+      (error) => {
+        this.showErrors = true;
+      }
+    );
   }
 }

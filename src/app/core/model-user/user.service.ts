@@ -7,30 +7,28 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class UserSevices {
-  private apiUrl = environment.apiUrl;
-
   constructor(private http: HttpClient) {}
 
   postUser(data: User) {
-    return this.http.post<User>(`${this.apiUrl}/auth/register`, data);
+    return this.http.post<User>('auth/register', data);
   }
 
   getUser(data: any) {
-    return this.http.post(`${this.apiUrl}/auth/login`, data);
+    return this.http.post('auth/login', data);
   }
 
   getUserInfor() {
-    return this.http.get(`${this.apiUrl}/api/users/info`);
+    return this.http.get('api/users/info');
   }
 
   forgotPassword(data: any) {
-    return this.http.post(`${this.apiUrl}/auth/forgot-password`, data);
+    return this.http.post('auth/forgot-password', data);
   }
 
   switchRole(data: any) {
-    return this.http.post(`${this.apiUrl}/api/users/switch-role`, data);
+    return this.http.post('api/users/switch-role', data);
   }
   resetPassword(data: any) {
-    return this.http.post(`${this.apiUrl}/auth/reset-password`, data)
+    return this.http.post('auth/reset-password', data);
   }
 }

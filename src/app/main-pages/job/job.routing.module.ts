@@ -13,7 +13,7 @@ const routes: Routes = [
   {
     path: 'post',
     component: PostStepComponent,
-    canActivate: [GuardService]
+    canActivate: [GuardService],
   },
 ];
 
