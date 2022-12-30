@@ -1,0 +1,130 @@
+<div [class.disable]="showAlert">
+  <app-detail-header
+    [isSwitch]="isSwitch"
+    [showAlert]="showAlert"
+    (changeShowAlert)="changeShowAlert($event)"
+  ></app-detail-header>
+  <div class="container">
+    <p class="showError" *ngIf="showErrors">
+      Data post has been failed
+      <i class="fa-solid fa-xmark" (click)="showErrors = false"></i>
+    </p>
+    <h2 class="header">Post Job</h2>
+    <ul class="job-list">
+      <li class="job-item">
+        <a href="">Classic Job</a><i class="fa-solid fa-circle-info"></i>
+      </li>
+      <li class="job-item">
+        <a href="">List Job</a><i class="fa-solid fa-circle-info"></i>
+      </li>
+    </ul>
+    <div class="main">
+      <!-- step1 -->
+      <div class="select-region" [hidden]="swtichStep">
+        <span>Choose targeting zone</span>
+        <div class="list-region">
+          <div class="item-region" *ngFor="let item of dataListTargetZone">
+            <ng-container>
+              <input
+                type="radio"
+                id="{{ item }}"
+                name="region"
+                value="{{ item }}"
+              />
+              <label for="{{ item }}" (click)="getTargetZone(item)">{{
+                item
+              }}</label>
+            </ng-container>
+          </div>
+        </div>
+        <div class="zone">
+          <span
+            >Select ALL countries you want to EXCLUDE from the selected zone
+            (optional)</span
+          >
+          <div class="list-zone">
+            <ng-container *ngIf="jobData">
+              <ng-container *ngFor="let item of jobData.data; let i = index">
+                <div
+                  class="item-zone"
+                  (click)="getIndex(i)"
+                  *ngIf="item.targetZone[0] === listTargetZone"
+                >
+                  <input
+                    type="checkbox"
+                    id="{{ item.id }}"
+                    value="{{ item.name }}"
+                    name="{{ item.name }}"
+                    [checked]="jobData[i]"
+                    (click)="getCtry($event)"
+                  />
+                  <label for="{{ item.id }}">{{ item.name }}</label>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div class="next-btn" (click)="swtichStep = true">
+            <button>Apply and go to next</button>
+          </div>
+        </div>
+      </div>
+      <!-- step2 -->
+      <div class="select-category" [hidden]="!swtichStep">
+        <span>Choose the job category</span>
+        <div class="list-category">
+          <ng-container *ngIf="listCategory">
+            <div
+              class="item-category"
+              *ngFor="let item of listCategory.data"
+              (click)="getCategoryName(item)"
+            >
+              <input type="radio" id="{{ item.name }}" name="category" />
+              <label for="{{ item.name }}">{{ item.name }}</label>
+            </div>
+          </ng-container>
+        </div>
+        <div class="subcategory">
+          <span>Choose the subcategory</span>
+          <ng-container *ngIf="listCategory">
+            <div class="list-subcategory">
+              <ng-container *ngFor="let item of listCategory.data">
+                <ng-container *ngIf="item.name === categoryName">
+                  <div
+                    class="item-subcategory"
+                    *ngFor="let i of item.children"
+                    (click)="getSubCategoryName(i)"
+                  >
+                    <ng-container>
+                      <input
+                        type="radio"
+                        id="{{ i.name }}"
+                        name="subcategory"
+                      />
+                      <label for="{{ i.name }}">{{ i.name }}</label>
+                    </ng-container>
+                  </div>
+                </ng-container>
+              </ng-container>
+            </div>
+          </ng-container>
+          <div class="next-btn" (click)="postJob()">
+            <button>POST JOB</button>
+          </div>
+        </div>
+      </div>
+      <div class="show-result">
+        <app-show-result
+          [listCountry]="listCountry"
+          [listTargetZone]="listTargetZone"
+          [category]="categoryName"
+          [subCategory]="subCategoryName"
+        >
+        </app-show-result>
+      </div>
+    </div>
+    <div>
+      <app-step [switchStep]="swtichStep" (changStep)="changeStep()"></app-step>
+    </div>
+  </div>
+  <app-footer></app-footer>
+</div>

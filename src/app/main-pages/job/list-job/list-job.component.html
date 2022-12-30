@@ -1,0 +1,10 @@
+<div class="authentication" [class.disable]="showAlert">
+  <div class="">
+    <app-detail-header
+      [showAlert]="showAlert"
+      (changeShowAlert)="changeShowAlert($event)"
+    ></app-detail-header>
+    <app-search></app-search>
+  </div>
+  <app-footer></app-footer>
+</div>

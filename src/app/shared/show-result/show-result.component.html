@@ -1,0 +1,29 @@
+<div class="show-region">
+  <img src="https://sproutgigs.com/assets/images/post-job-summary@2x.png" alt="">
+  <div class="result-region" id="style-4">
+    <p class="result-region__title">SUMMARY</p>
+    <p>Estimated Job costs: <span>$1.1850</span></p>
+    <hr>
+    <p>Zone: <span>{{listTargetZone}}</span></p>
+    <p>Exclude:<span *ngFor="let item of listCountry">{{ item }}, </span></p>
+    <hr>
+    <p>Category: <span>{{category}}</span></p>
+    <p>Subcategory: <span>{{subCategory}}</span></p>
+    <hr>
+    <p>Level: <span>stater</span></p>
+    <p>Speed: <span>1000</span></p>
+    <p>Workers needed: <span>25</span></p>
+    <p>Notify flowers</p>
+    <p>Workers will earn <span>0.020</span></p>
+    <p>Required screenshots: <span>0</span></p>
+    <p>Hold job time: <span>5</span></p>
+    <p>Pause after approval: <span>no</span></p>
+    <p>Time to rate: <span>7</span></p>
+    <p>Autorate task: <span>Yes</span></p>
+    <p>Job title: <span>job</span></p>
+    <p>Tasks to be completed: <span>Need to complete</span></p>
+    <p>Additional Notes: <span>Need Additional</span></p>
+    <p>Proofs required: <span>Required</span></p>
+  </div>
+  <button class="btn-clear" (click)="clear()">CLEAR ALL</button>
+</div>

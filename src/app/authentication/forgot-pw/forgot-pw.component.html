@@ -1,0 +1,49 @@
+<div class="authentication">
+  <app-header></app-header>
+  <div class="showError" [class.show]="showError">
+    <p>
+      Email is not registered
+      <i class="fa-solid fa-xmark" (click)="showError = false"></i>
+    </p>
+  </div>
+  <div class="background" [class.active]="showSuccess">
+    <div class="showSuccess">
+      <p>Please check your email to confirm your reset password</p>
+      <button (click)="showSuccess = false">Close</button>
+    </div>
+  </div>
+  <form action="" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="container">
+      <div class="btn-back">
+        <span style="cursor: pointer" (click)="backToLogin()"
+          ><i class="fa-solid fa-arrow-left"></i>Back</span
+        >
+      </div>
+      <div class="form">
+        <h2 class="form-header">Enter Your Email</h2>
+        <div class="form-group">
+          <label for="">Email</label>
+          <input
+            type="text"
+            placeholder="Type your response here"
+            formControlName="email"
+          />
+        </div>
+        <span
+          class="showErrors"
+          *ngIf="f['email'].errors?.['required'] && isSubmitted"
+          >Email is required</span
+        >
+        <span
+          class="showErrors"
+          *ngIf="!f['email'].errors?.['required']  && f['email'].errors?.['emailInvalid'] && isSubmitted"
+          >Email is invalid</span
+        >
+        <div class="form-footer">
+          <button class="form-footer__btn">SUBMIT</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <app-footer></app-footer>
+</div>
